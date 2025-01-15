@@ -12,7 +12,7 @@ export const darkTheme: DefaultTheme = {
     gray5: "#CDCDCD",
 }
 
-export const lightThemeTheme: DefaultTheme = {
+export const lightTheme: DefaultTheme = {
     bgColor: "#E6E6E6",
     textColor: "#191A1D",
     mainColor: "#1A73E8",
