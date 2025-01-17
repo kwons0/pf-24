@@ -6,6 +6,7 @@ import Page from "./page";
 import { useRecoilState } from "recoil";
 import { isModalOpen } from "../atom";
 import { useEffect } from "react";
+import { GITHUB, MAIL, PHONE } from "./svg";
 
 
 const ContainerWrap = styled.div`
@@ -99,7 +100,7 @@ function Box(){
                                     <Stack key={idx}>
                                         {
                                             data.img !== "" ? ( <>
-                                                <img src={"/asset/intro/svg/"+data.img+".svg"} alt={data.img}/>
+                                                <img src={"/asset/svg/"+data.img+".svg"} alt={data.img}/>
                                                 <p>{data.title}</p>
                                             </> ) : null
                                         }
@@ -112,12 +113,12 @@ function Box(){
                         <h3>Project(2)</h3>
                         <p>2021.11 ~ 2024.08 실무 협업</p>
                         <PBox>
-                            <li><img src="/asset/intro/svg/project2-1.svg" alt="brand-l"/></li>
-                            <li><img src="/asset/intro/svg/project2-2.svg" alt="brand-g"/></li>
-                            <li><img src="/asset/intro/svg/project2-3.svg" alt="brand-w"/></li>
-                            <li><img src="/asset/intro/svg/project2-4.svg" alt="brand-s"/></li>
+                            <li><img src="/asset/svg/project2-1.svg" alt="brand-l"/></li>
+                            <li><img src="/asset/svg/project2-2.svg" alt="brand-g"/></li>
+                            <li><img src="/asset/svg/project2-3.svg" alt="brand-w"/></li>
+                            <li><img src="/asset/svg/project2-4.svg" alt="brand-s"/></li>
                             <li><DotWrap><Dot/><Dot/><Dot/></DotWrap></li>
-                            <li><img src="/asset/intro/svg/arrow.svg" alt=""/></li>
+                            <li><img src="/asset/svg/arrow.svg" alt=""/></li>
                         </PBox>
                         <div>속옷 브랜드, 반려동물 브랜드, 헤어케어 브랜드 등<br/>약 10개 브랜드 이야기</div>
                     </Container>
@@ -135,9 +136,9 @@ function Box(){
                     </Container>
                     <CBox>
                         <ul>
-                            <li><img src="/asset/intro/svg/mail.svg" alt="mail"/><span>kwons0128@gmail.com</span></li>
-                            <li><img src="/asset/intro/svg/phone.svg" alt="phone"/><span>+82 10.4430.0820</span></li>
-                            <li><img src="/asset/intro/svg/github.svg" alt="github"/><span>https://github.com/kwons0</span></li>
+                            <li><MAIL/><span>kwons0128@gmail.com</span></li>
+                            <li><PHONE/><span>+82 10.4430.0820</span></li>
+                            <li><GITHUB/><span>https://github.com/kwons0</span></li>
                         </ul>
                     </CBox>
                     <Container>
@@ -150,7 +151,7 @@ function Box(){
                                         onClick={() => onProjectClick(data.href)}
                                         layoutId={data.href}
                                     >
-                                        <img src={"/asset/intro/svg/"+data.img+".svg"} alt={data.img}/>
+                                        <img src={"/asset/svg/"+data.img+".svg"} alt={data.img}/>
                                         <p>{data.title}</p>
                                     </Project1>
                                 ))
@@ -161,12 +162,12 @@ function Box(){
                         <h3>Project(3)</h3>
                         <p>2021.04 ~ 2021.11 작업 개인 프로젝트</p>
                         <PBox>
-                            <li><img src="/asset/intro/svg/project3-1.svg" alt="21-pf"/></li>
-                            <li><img src="/asset/intro/svg/project3-2.svg" alt="pixar"/></li>
-                            <li><img src="/asset/intro/svg/project3-3.svg" alt="pizzahut"/></li>
-                            <li><img src="/asset/intro/svg/project3-4.svg" alt="market"/></li>
+                            <li><img src="/asset/svg/project3-1.svg" alt="21-pf"/></li>
+                            <li><img src="/asset/svg/project3-2.svg" alt="pixar"/></li>
+                            <li><img src="/asset/svg/project3-3.svg" alt="pizzahut"/></li>
+                            <li><img src="/asset/svg/project3-4.svg" alt="market"/></li>
                             <li><DotWrap><Dot/><Dot/><Dot/></DotWrap></li>
-                            <li><img src="/asset/intro/svg/arrow.svg" alt=""/></li>
+                            <li><img src="/asset/svg/arrow.svg" alt=""/></li>
                         </PBox>
                     </Container>
                 </ul>

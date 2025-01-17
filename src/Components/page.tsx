@@ -6,9 +6,6 @@ import Animal from '../Routes/project/animal';
 import Bestseller from '../Routes/project/bestseller';
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { isModalOpen } from "../atom";
-import { useRecoilState } from "recoil";
-import { useEffect } from "react";
 
 const Overlay = styled(motion.div)`
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 99;
@@ -16,17 +13,13 @@ const Overlay = styled(motion.div)`
 const ModalBox = styled(motion.div)`
     position: fixed; left:50%; top: 50%;
     width: 80vw; height: 80vh; z-index: 100; box-sizing: border-box; border-radius: 2rem;
-    padding: 5rem; background: ${(props)=>props.theme.gray1};
+    background: ${(props)=>props.theme.gray1}; overflow: hidden;
 `;
 
 function Page(){
     const location = useLocation();
     const navigate = useNavigate();
     const { projectId } = useParams();
-
-    const [ modalOpen, setModalOpen ] = useRecoilState(isModalOpen)
-
-    console.log( modalOpen)
 
     const onOverlayClick = () => {
         navigate('/')
