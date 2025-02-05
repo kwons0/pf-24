@@ -1,5 +1,8 @@
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { isDarkAtom } from "../atom";
 
+const IntroWrap = styled.div`margin: 0 0 40%;`
 const Title = styled.h1`
     text-align: center; line-height: 1.4;
     span{ color: ${(props)=> props.theme.gray5}; font-size: 20px; }
@@ -12,15 +15,15 @@ const Wrapper = styled.div`
     img{ padding: 0 10%;}
 `
 const Wrapper2 = styled(Wrapper)`
-    margin: 18rem 0%;
+    margin: 18rem 0%; position: relative; z-index: 10;
     div{ margin: 25px 0; }
-    img{ padding: 0 34%; }
+    img{ padding: 0; width: 380px; margin: 20px auto; box-shadow: 0px 10px 30px rgba(0,0,0,0.3); border-radius: 15px; }
 `
 const BgImgWrap = styled.div`
     position: relative;
     ul{ opacity: 0.3;}
 `
-const BgImgs = styled.img`width:25%; position: absolute; left: 0; top: 0;`
+const BgImgs = styled.img`width:25%; position: absolute; left: 0; top: 0; box-shadow: 5px 10px 15px rgba(0,0,0,0.2); border-radius: 15px;`
 const BgImg1 = styled(BgImgs)`left: 10%; top: -5%;`
 const BgImg2 = styled(BgImgs)`width: 27%; left: 2%; top: 30%;`
 const BgImg3 = styled(BgImgs)`width: 23%; left: 2%; top: 50%;`
@@ -33,21 +36,22 @@ const BgImg9 = styled(BgImgs)`width: 25%; left: 60%; top: -3%;`
 
 
 function Intro(){
+
+    const isDark = useRecoilValue(isDarkAtom);
+
     return(
-        <div>
+        <IntroWrap>
             <Title><span>Becoming a</span><br/><b>Frontend Developer</b></Title>
             <Wrapper>
                 <h2>모든 시작이 하나의 길을 만들다</h2>
                 <div>신문방송학을 전공하며 영상과 연출 PD로 활동했고, 시각디자인학부를 부전공했습니다.<br/>이후 웹 디자이너로 활동하며 디자인 감각을 다져왔습니다.<br/>이런 경험을 발판으로 2021년부터는 프론트엔드 개발자로서 새로운 길에 도전하고 있습니다.</div>
-                <img src="/asset/intro/memoji_dark.png" alt="memoji"/>
+                { <img src=
+                    { isDark ? (
+                        "/asset/intro/memoji_dark.png") : ("/asset/intro/memoji_light.png")
+                    } alt="memoji"/>
+                }
             </Wrapper>
             <BgImgWrap>
-                <Wrapper2>
-                    <h2>디자인을 이해하는 개발자의 협업 방식</h2>
-                    <div>디자이너로서의 경험을 활용해 디자인 시안에서 놓치기 쉬운 부분을 찾아내고,<br/>톤앤매너를 유지하면서도 개선된 방향을 제안합니다.</div>
-                    <img src="/asset/intro/design1.png" alt="design"/>
-                    <div>좋은 디자인을 식별하고 이를 구현할 수 있는 개발자는<br/>더 나은 결과를 만들어낼 무한한 가능성을 가지고 있다고 믿습니다.</div>
-                </Wrapper2>
                 <ul>
                     <li><BgImg2 src="/asset/intro/design3.png" alt="design-bg"/></li>
                     <li><BgImg1 src="/asset/intro/design2.png" alt="design-bg"/></li>
@@ -59,9 +63,14 @@ function Intro(){
                     <li><BgImg9 src="/asset/intro/design10.png" alt="design-bg"/></li>
                     <li><BgImg8 src="/asset/intro/design9.png" alt="design-bg"/></li>
                 </ul>
-                
+                <Wrapper2>
+                    <h2>디자인을 이해하는 개발자의 협업 방식</h2>
+                    <div>디자이너로서의 경험을 활용해 디자인 시안에서 놓치기 쉬운 부분을 찾아내고,<br/>톤앤매너를 유지하면서도 개선된 방향을 제안합니다.</div>
+                    <img src="/asset/intro/design1.png" alt="design"/>
+                    <div>좋은 디자인을 식별하고 이를 구현할 수 있는 개발자는<br/>더 나은 결과를 만들어낼 무한한 가능성을 가지고 있다고 믿습니다.</div>
+                </Wrapper2>
             </BgImgWrap>
-        </div>
+        </IntroWrap>
     )
 }
 export default Intro;

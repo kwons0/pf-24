@@ -13,7 +13,7 @@ export const darkTheme: DefaultTheme = {
 }
 
 export const lightTheme: DefaultTheme = {
-    bgColor: "#E6E6E6",
+    bgColor: "#f1f1f1",
     textColor: "#191A1D",
     mainColor: "#1A73E8",
 
@@ -24,3 +24,9 @@ export const lightTheme: DefaultTheme = {
     gray5: "#202124",
 }
 
+
+export const breakpoints = {
+    mobile: "576px",
+    tablet: "768px",
+    desktop: "1024px",
+};
