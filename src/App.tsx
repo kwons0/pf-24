@@ -1,5 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from './theme';
+import { breakpoints, darkTheme, lightTheme } from './theme';
 import { useRecoilValue } from 'recoil';
 import { isDarkAtom } from './atom';
 import Router from "./Router";
@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a { text-decoration:none; color: inherit; }
   img{ display:inline-block; width: 100%; }
-  #root{ max-width: 1140px; margin: 100px auto; }
+  #root{ max-width: 1140px; margin: 0 auto; }
 `;
 
 

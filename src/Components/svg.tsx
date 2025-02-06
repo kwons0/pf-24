@@ -25,7 +25,7 @@ export const PHONE = ({color}: {color: string}) => (
     </svg>
 );
 export const LINKICON = ({color}: {color: string}) => (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="12" height="12" viewBox="0 -1 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.903214 12L0 11.0968L9.81107 1.28571H3.85714V0H12V8.14286H10.7143V2.18893L0.903214 12Z" fill={color}/>
     </svg>
 );
@@ -78,4 +78,8 @@ export const DARKTHEME = () => (
 )
 export const LIGHTTHEME = () => (
     <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#191A1D"><path d="M450-802.31V-910h60v107.69h-60ZM450-50v-107.69h60V-50h-60Zm352.31-400v-60H910v60H802.31ZM50-450v-60h107.69v60H50Zm690.31-248.15-42.16-42.16L762-805.38 805.38-762l-65.07 63.85ZM198-154.62 154.62-198l65.07-63.85 42.16 42.16L198-154.62Zm564 0-63.85-65.07 42.16-42.16L805.38-198 762-154.62ZM219.69-698.15 154.62-762 198-805.38l63.85 65.07-42.16 42.16ZM480.09-260q-91.63 0-155.86-64.14Q260-388.28 260-479.91q0-91.63 64.14-155.86Q388.28-700 479.91-700q91.63 0 155.86 64.14Q700-571.72 700-480.09q0 91.63-64.14 155.86Q571.72-260 480.09-260Zm-.09-60q67 0 113.5-46.5T640-480q0-67-46.5-113.5T480-640q-67 0-113.5 46.5T320-480q0 67 46.5 113.5T480-320Zm0-160Z"/></svg>
+)
+
+export const CLOSE = ({color}: {color: string}) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill={color}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
 )

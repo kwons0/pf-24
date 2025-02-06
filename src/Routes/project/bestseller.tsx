@@ -62,9 +62,9 @@ function Bestseller(){
             bgimg="/asset/project/pj4/pj4-cover.png" 
             favicon="/asset/project/pj4/pj4-favi.svg"
             title="The New York Times Best Seller"
-            siteLink="" 
-            githubLink="" 
-            notionLink="" 
+            siteLink="https://nextjs-bestseller-two.vercel.app/" 
+            githubLink="https://github.com/kwons0/bestSeller" 
+            notionLink="https://www.notion.so/The-New-York-Times-Best-Seller-192f26733a5f80ae8c45d114899321fc?pvs=4" 
             desc="베스트셀러 책을 리스트별로 살펴볼 수 있는 사이트 입니다." 
             contents={ [ "API", "슬라이드" ] }
             date="2024.11, 1일" 

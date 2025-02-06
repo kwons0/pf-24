@@ -1,6 +1,6 @@
 import styled, { useTheme } from "styled-components";
 import { dataItems } from "../data";
-import { Link, useLocation, useMatch, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Page from "./page";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
@@ -9,10 +9,11 @@ import { useEffect } from "react";
 import { ARROW, CURSOR, DARKTHEME, GITHUB, LIGHTTHEME, LINKICON, MAIL, NOTION, PHONE } from "./svg";
 import { breakpoints, darkTheme, lightTheme } from "../theme";
 
+const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
-const TitleWrap = styled.div`
-    padding: 0 5%;
-    @media (max-width: ${breakpoints.tablet}) { padding: 0 8%; }
+const TitleWrap = styled.div`padding: 0 5% ;
+    
+    ${mediaTablet} { padding: 0 5vw 20vw; }
 `
 const Sub = styled.div`font-size: 23px; font-weight: 500; padding-bottom: 10px;`
 const Create = styled.span`
@@ -33,58 +34,60 @@ const Mode = styled.div`cursor:pointer;`
 const ContainerWrap = styled.div`
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     height: 1900px; flex-wrap: wrap; padding: 0 3vw; margin: 0;
-    @media (max-width: ${breakpoints.tablet}) { display:block; height: fit-content; padding: vw 3vw; }
+    ${mediaTablet}{ display:block; height: fit-content; padding: 5vw; }
 
     > ul{width: 48%;}
 `
 const Container = styled.li<{isDark: boolean}>`
-    background: ${({isDark})=> isDark ? "#ffffff1f" : "#FFFFFF"}; 
+    background: ${({isDark})=> isDark ? "#292929" : "#FFFFFF"}; 
     padding: 5%; margin: 0 0 5% 0; border-radius: 3vw; width: 46%;
-    position: relative;
+    position: relative; height: fit-content;
+    ${mediaTablet}{ width: 100%; margin: 5% auto; padding: 6vw 7vw; font-size: 15px;}
+    
     > h3{ 
         font-size: 45px; color: ${(props)=> props.theme.textColor+"33"};  font-weight: 700;
-        position: sticky; top: 20px;
+        position: sticky; top: 20px; z-index: 10;
     }
     > p{ color: ${({theme, isDark})=> isDark ? theme.gray5 : theme.gray3};
-        padding: 20px 0 40px;}
+        padding: 20px 0 45px;}
     > div{ line-height: 1.5;}
-    @media (max-width: ${breakpoints.tablet}) { width: 90%; margin: 5% auto;}
 `
-const Container1 = styled(Container)`order: 4;
-height: fit-content;
-    @media (max-width: ${breakpoints.tablet}) { order: 1; }
+const Container1 = styled(Container)`order: 4; height: fit-content;
+    > p{ padding: 20px 0;}
+    ${mediaTablet}{ order: 1; }
 `;
 const Container2 = styled(Container)`order: 1; margin-top: 250px;
-    @media (max-width: ${breakpoints.tablet}) { order: 3; margin-top: 0;}
+    >p{ padding: 20px 0 55spx;}  
+    ${mediaTablet}{ order: 3; margin-top: 0;}
 `;
 const Container3 = styled(Container)`order: 6;
-    @media (max-width: ${breakpoints.tablet}) { order: 4; }
+    ${mediaTablet}{ order: 4; }
 `;
 const Container4 = styled(Container)`order: 2;
-    @media (max-width: ${breakpoints.tablet}) { order: 5; }
+    ${mediaTablet}{ order: 5; }
 `;
 const Container5 = styled(Container)`order: 7;
-    @media (max-width: ${breakpoints.tablet}) { order: 6; }
+    ${mediaTablet}{ order: 6; }
 `;
 const EmptyContainer = styled.div`
     height: 300px; order: 3;
-    @media (max-width: ${breakpoints.tablet}) { display:none;}
+    ${mediaTablet}{ display:none;}
 `
 const CBox = styled(Container)`
-    background: ${({isDark}) => isDark ? "#394A5A" : "#BDDFFF"}; order: 5;
-    @media (max-width: ${breakpoints.tablet}) { order: 2; }
+    background: ${({isDark}) => isDark ? "#bddfff2b" : "#BDDFFF"}; order: 5;
+    ${mediaTablet}{ order: 2; }
     ul{ 
         li{ display: flex; align-items: center; margin: 0 0 5% 0; line-height: 1;
             &:last-child{ margin-bottom: 0; justify-content: space-between;}
             a{ display: flex; align-items: center;}
-            svg{ width: 22px;}
-            span{ padding-left: 15px;}
+            svg{ width: 18px; height: 18px; ${mediaTablet}{ width: 16px; height: 16px;}}
+            span{ padding-left: 15px; ${mediaTablet}{ padding-left: 10px;}}
             p{ width: 50%;}
         }
     }
 `
 const PBox = styled.ul`
-    display: flex; align-items: center; justify-content: space-between; margin: 5% 0%;
+    display: flex; align-items: center; justify-content: space-between; margin: 0 0 7%;
     li{display: flex; align-items: center; margin-right: 1%; }
 `
 const FaviWrap = styled.li` width: 75%;
@@ -110,20 +113,24 @@ const Item = styled.li`
     p{line-height:1.5;}
 `
 const Stack = styled(Item)`
-    width: 12%; margin: 0 10% 3% 0;
+    width: 12%; margin: 0 10% 5% 0;
     &:nth-child(5n){ margin-right:0;}
     p{ font-size: 12px; padding: 15px 0; line-height: 1.2;}
 `
 const Project1 = styled(Stack)<IProjectPops>`
-    width: 22%; margin: 3% 17% 5% 0; cursor: pointer;
+    width: 22%; margin: 3% 17% 10% 0; cursor: pointer;
     &:nth-child(3n){ margin-right:0;}
-    p{ font-size: 16px;  padding: 18px 0;}
+    p{ font-size: 16px;  padding: 18px 0 0;}
     img{border-radius: 15px;}
 `
 
-const Line = styled.div``
-const Line1 = styled(Line)``
-const Line2 = styled(Line)``
+const Line = styled.div<{isDark: boolean}>`
+    position: absolute; width: 25%; height: 1px; 
+    border: 3px dashed ${({isDark})=> isDark ? "#292929" : "#FFFFFF"}; outline-offset: 5px;
+    ${mediaTablet}{ display: none;}
+`
+const Line1 = styled(Line)`left: -15%; bottom: 40%; transform: rotate(-45deg);`
+const Line2 = styled(Line)`right: -15%; bottom: 0; transform: rotate(45deg);`
 
 interface IProjectPops {
     layoutId: string
@@ -229,7 +236,7 @@ function Box(){
                             ))
                         }
                     </ItemBox>
-                    <Line1></Line1>
+                    <Line1 isDark={isDark}></Line1>
                 </Container3>
 
                 <Container4 isDark={isDark}>
@@ -250,7 +257,7 @@ function Box(){
                         </PBox>
                     </Link>
                     <div>속옷 브랜드, 반려동물 브랜드, 헤어케어 브랜드 등<br/>1n개 브랜드 이야기</div>
-                    <Line2></Line2>
+                    <Line2 isDark={isDark}></Line2>
                 </Container4>
 
                 <Container5 isDark={isDark}>

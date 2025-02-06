@@ -2,7 +2,10 @@ import { useRecoilValue } from "recoil";
 import { GITHUB, LINKICON, NEXTJS, NOTION } from "./svg";
 import styled from "styled-components";
 import { isDarkAtom } from "../atom";
+import { breakpoints } from "../theme";
+import { Link } from "react-router-dom";
 
+const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
 const CoverBox = styled.div`position: relative;`
 const CoverBg = styled.div<{isDark: boolean}>`
@@ -17,25 +20,29 @@ const CoverBg = styled.div<{isDark: boolean}>`
         };
         
     }
-    img{ height: 100%; object-fit: cover;  vertical-align: top;}
+    img{ height: 100%; object-fit: cover;  vertical-align: top; transform: translateY(-1px);}
 `
 const Favicon = styled.img`width: 43px;`
 const Title = styled.div<{isDark: boolean}>`
     position: absolute; left: 5vw; top: 50%;
     h4{ font-size: 25px; margin: 17px 0 30px;}
     > ul { 
-        display: flex; align-items: center; 
+        display: flex; align-items: center;
         > li {
             padding: 7px 10px; 
             background: ${({theme, isDark}) => isDark ? theme.textColor+'33': theme.bgColor };
             font-size: 14px; margin: 0 16px 0 0; border-radius: 5px; line-height: 1;
             svg{ width: 12px; height: 11px; margin: 0 5px 0 0;}
+            ${mediaTablet}{ font-size: 12px; padding: 5px 9px; margin: 0 10px 0 0;}
         }
     }
 `
 
 const Info = styled.ul`
     margin: 80px 0 0; padding: 0 5vw; display: flex; justify-content: space-between; gap: 20px;
+    ${mediaTablet}{ margin: 50px 0 0; display: block;
+        > li{ margin-bottom: 10px;}
+    }
 `
 const Desc = styled.div`margin-bottom: 20px;`
 const SectionTitle = styled.span`color: ${(props)=>props.theme.gray3}; 
@@ -43,7 +50,9 @@ const SectionTitle = styled.span`color: ${(props)=>props.theme.gray3};
 ` 
 const SectionContents = styled.ul`
     display: flex; margin: 2px 0 0; flex-wrap: wrap;
-    > li{ width: 40%; margin-left: 20px; list-style: disc; padding-left: 3px; line-height: 1.5;}
+    > li{ width: 40%; margin-left: 20px; list-style: disc; padding-left: 3px; line-height: 1.5;
+        ${mediaTablet}{ width: 100%;}
+    }
     
 `
 const IconBox = styled.div`display:flex; align-items: center; margin-top: 20px;
@@ -84,9 +93,9 @@ function Cover(
                 <Favicon src={favicon}/>
                 <h4>{title}</h4>
                 <ul>
-                    <li>사이트 바로가기<LINKICON color={ isDark ? "#E6e6e6" : "#202124" }/></li>
-                    <li><GITHUB color={ isDark ? "#E6e6e6" : "#202124"}/>Github</li>
-                    <li><NOTION color={ isDark ? "#E6e6e6" : "#202124"}/>Notion</li>
+                    { siteLink !== "" ? <li><Link to={siteLink} target="_blank">사이트 바로가기 <LINKICON color={ isDark ? "#E6e6e6" : "#202124" }/></Link></li> : null }
+                    { githubLink !== "" ? <li><Link to={githubLink} target="_blank"><GITHUB color={ isDark ? "#E6e6e6" : "#202124"}/>Github</Link></li> : null }
+                    { notionLink !== "" ? <li><Link to={notionLink} target="_blank"><NOTION color={ isDark ? "#E6e6e6" : "#202124"}/>Notion</Link></li> : null }
                 </ul>
             </Title>
         </CoverBox>

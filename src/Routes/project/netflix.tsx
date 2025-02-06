@@ -40,9 +40,9 @@ function Netflix(){
             bgimg="/asset/project/pj3/pj3-cover.png" 
             favicon="/asset/project/pj3/pj3-favi.svg"
             title="넷플릭스 Clone"
-            siteLink="" 
+            siteLink="https://stackblitz.com/edit/reactstudy-a18-blueprint-2vcbkd-uukbe7?file=README.md" 
             githubLink="" 
-            notionLink="" 
+            notionLink="https://www.notion.so/Clone-192f26733a5f80afb8e2f15822810c5e?pvs=4" 
             desc="넷플릭스 사이트를 클론하였습니다." 
             contents={ [ "컴포넌트 공통 관리", "헤더 애니메이션", "팝업" ] }
             date="2024.11, 5일" 

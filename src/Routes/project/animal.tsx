@@ -4,7 +4,9 @@ import { NEXTJS, VERCEL } from "../../Components/svg";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../../atom";
 import { breakpoints, darkTheme, lightTheme } from "../../theme";
+import { useEffect, useState } from "react";
 
+const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
 const ProjectBox = styled.div`
     position: relative;  -ms-overflow-style: none; overflow-x: hidden;
@@ -16,14 +18,14 @@ const Contents = styled.div`margin: 50px 0 0;`
 const Article = styled.div<{pd: string, wd?: string}>`
     line-height: 1.5; padding: ${(props) => props.pd}; width: ${(props)=>props.wd};
     > p{ font-size: 25px; padding-bottom: 20px;}
-    @media (max-width: ${breakpoints.tablet}) { width: 100%; }
+    ${mediaTablet}{ width: 100%; }
 `
 const BgimgWrap = styled.div<{bg: string}>`
     background: url(${(props) => props.bg}); background-size: cover; margin-top: -5px; color: #000;
 `
 const Flex = styled.div<{space?:string}>`
     display: flex; align-items:flex-start; justify-content: ${(props)=>props.space};
-    @media (max-width: ${breakpoints.tablet}) { display: block; }
+    ${mediaTablet}{ display: block; }
 `
 const ImgWd = styled.img<{wd?: string, max?:string}>`
     width: ${(props)=>props.wd}; max-width: ${(props)=>props.max};
@@ -31,24 +33,42 @@ const ImgWd = styled.img<{wd?: string, max?:string}>`
 const Pd5vw = styled.div`padding: 5vw;`
 const ImgFlexWrap = styled(Flex)<{pd?: string,mg?: string, wd?: string}>` position: relative;
     padding: ${(props) => props.pd}; margin: ${(props) => props.mg}; width: ${(props)=>props.wd};
-    @media (max-width: ${breakpoints.tablet}) { width: 100%; }
+    ${mediaTablet}{ width: 100%;}
 `
-const Deco = styled.img<{wd: string, left?: string, top?: string, right?: string, bottom?: string}>`
-    position: absolute;  width: ${(props)=>props.wd};
+const SpaceInTab = styled(ImgFlexWrap)` ${mediaTablet}{ display: flex !important;}`
+
+const Deco = styled.img<{display?: string, wd: string, left?: string, top?: string, right?: string, bottom?: string}>`
+    position: absolute;  width: ${(props)=>props.wd}; display: ${(props)=>props.display || "inline-block"};
     left: ${(props)=>props.left || "auto"}; top: ${(props)=>props.top || "auto"};
     right: ${(props)=>props.right || "auto"}; bottom: ${(props)=>props.bottom || "auto"};
 `
 const Reverse = styled.div`
-    @media (max-width: ${breakpoints.tablet}) { 
-        display: flex; flex-direction: column;
-        & > * > :first-child{ order: 2};
-        & > * > :nth-child(2){ order: 1};
+    > *{ display: flex;}
+    ${mediaTablet}{ 
+        > *{ display: flex; flex-direction: column;}
+        & > * > :nth-child(1){ order: 2;};
+        & > * > :nth-child(2){ order: 1;};
      }
 `
+
+function FindWindowWidth(){
+    const [width, setWidth] = useState(window.innerWidth);
+    useEffect( () => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize',handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    },[])
+    return width;
+}
 
 function Animal(){
     const isDark = useRecoilValue(isDarkAtom)
     const iconColor = isDark ? darkTheme.textColor : lightTheme.textColor;
+
+    const width = FindWindowWidth();
+    const tabWidth = Number(breakpoints.tablet.split('px')[0])
+    console.log( width, Number(breakpoints.tablet.split('px')[0]) )
+
 
     return(
         <ProjectBox>
@@ -56,9 +76,9 @@ function Animal(){
                 bgimg="/asset/project/pj2/pj2-cover.png" 
                 favicon="/asset/project/pj2/pj2-favi.svg"
                 title="거래해요! 동물의 숲"
-                siteLink="" 
-                githubLink="" 
-                notionLink="" 
+                siteLink="https://carrot-market-clone-ten.vercel.app/" 
+                githubLink="https://github.com/kwons0/carrot-market-clone" 
+                notionLink="https://www.notion.so/192f26733a5f80ce9a00fe5a1746d5c1?pvs=4" 
                 desc="동물의 숲 캐릭터들이 중고거래 하는 컨셉의 웹 사이트 입니다." 
                 contents={ [ "회원가입, 로그인", "내 정보 수정", "글쓰기, 답글 쓰기", "검색" ] }
                 date="2024.12, 2주" 
@@ -75,7 +95,7 @@ function Animal(){
             <Contents>
                 <Pd5vw>
                     <img src="/asset/project/pj2/pj2-1.jpg"/>
-                    <Article pd="40px 35px">
+                    <Article pd={ width >= tabWidth ? "40px 35px" : "40px 0"}>
                         <p>목적에 더한 컨셉</p>
                         <div>당근마켓과 트위터의 기능을 결합한 중고거래 앱을 만들던 중, 단순한 클론처럼 보이지 않도록 차별화된 아이디어를 고민했습니다. 그 결과, 동물의 숲 캐릭터들이 중고거래를 한다는 독창적인 컨셉을 설정했습니다. <br/>
                             또한, ‘모여봐요 동물의 숲’ 로고를 변형하여 ‘거래해요 동물의 숲 - 마켓’이라는 새로운 로고를 직접 제작하였습니다.
@@ -84,11 +104,11 @@ function Animal(){
                 </Pd5vw>
                 <img src="/asset/project/pj2/pj2-bg1.png"/>
                 <BgimgWrap bg="/asset/project/pj2/pj2-bg2.png">
-                    <ImgFlexWrap pd="0 5vw" space="space-between">
+                    <SpaceInTab pd="0 5vw" space="space-between">
                         <ImgWd wd="32%" src="/asset/project/pj2/pj2-2.jpg"/>
                         <ImgWd wd="32%" src="/asset/project/pj2/pj2-3.jpg"/>
                         <ImgWd wd="32%" src="/asset/project/pj2/pj2-4.jpg"/>
-                    </ImgFlexWrap>
+                    </SpaceInTab>
                     <Article pd="35px 5vw">
                         <p>회원가입, 로그인</p>
                         <div>사용자가 입력한 정보를 실시간으로 확인하고 관리하여 회원가입/로그인을 진행합니다.<br/>
@@ -99,10 +119,10 @@ function Animal(){
                     </Article>
                     <Pd5vw>
                         <ImgFlexWrap mg="0 0 100px" space="space-between">
-                            <ImgFlexWrap pd="0" mg="0 0 35px" wd="65%" space="space-between">
+                            <SpaceInTab pd="0" mg="0 0 35px" wd="65%" space="space-between">
                                 <ImgWd wd="49%" src="/asset/project/pj2/pj2-5.jpg"/>
                                 <ImgWd wd="49%" src="/asset/project/pj2/pj2-6.jpg"/>
-                            </ImgFlexWrap>
+                            </SpaceInTab>
                             <Article pd="0" wd="30%">
                                 <Deco wd="100px" right="0" top="-12%" src="/asset/project/pj2/pj2-deco1.png"/>
                                 <p>홈</p>
@@ -122,16 +142,16 @@ function Animal(){
                                         버튼은 트윗 내용이 입력된 경우에만 활성화되도록 하였습니다.
                                     </div>
                                 </Article>
-                                <ImgFlexWrap pd="0" wd="65%" space="space-between">
+                                <SpaceInTab pd={ width >= tabWidth ? "0" : "0 0 40px"} wd="65%" space="space-between">
                                     <ImgWd wd="49%" src="/asset/project/pj2/pj2-7.jpg"/>
                                     <ImgWd wd="49%" src="/asset/project/pj2/pj2-8.jpg"/>
-                                    <Deco wd="200px" right="-10%" bottom="-20%" src="/asset/project/pj2/pj2-deco2.png"/>
-                                </ImgFlexWrap>
+                                    <Deco wd="200px" right="-10%" bottom={ width >= tabWidth ? "-20%" : "-10%"} src="/asset/project/pj2/pj2-deco2.png"/>
+                                </SpaceInTab>
                             </ImgFlexWrap>
                         </Reverse>
                         <ImgFlexWrap mg="0 0 50px"  space="space-between">
-                            <ImgWd wd="30%" max="300px" src="/asset/project/pj2/pj2-9.jpg"/>
-                            <Article pd="0" wd="65%">
+                            <ImgWd wd={ width >= tabWidth ? "30%" : "80%"} max="300px" src="/asset/project/pj2/pj2-9.jpg"/>
+                            <Article pd={ width >= tabWidth ? "0" : "40px 0 0"} wd="65%">
                                 <Deco wd="200px" right="-10%" bottom="-10%" src="/asset/project/pj2/pj2-deco3.png"/>
                                 <p>트윗 상세페이지, 댓글 기능</p>
                                 <div>트윗 상세 페이지는 트윗과 사용자 간의 다양한 상호작용을 지원합니다.<br/>
@@ -148,7 +168,7 @@ function Animal(){
                 <BgimgWrap bg="/asset/project/pj2/pj2-bg3.png">
                     <Reverse>
                         <ImgFlexWrap pd="100px 5vw 0" space="space-between">
-                            <Article pd="0" wd="30%">
+                            <Article pd={ width >= tabWidth ? "0" : "40px 0 0"} wd="30%">
                                 <p>검색 기능</p>
                                 <div>검색 페이지는 사용자가 입력한 검색어에 맞는 트윗과 사용자를 실시간으로 검색할 수 있는 페이지 입니다. <br/><br/>
                                     사용자가 검색어를 입력하면 그에 맞는 트윗만 화면에 필터링하여 표시하고, 검색어가 비어 있으면 결과가 보이지 않게 됩니다. <br/><br/>
@@ -156,26 +176,26 @@ function Animal(){
                                     이를 통해 사용자는 동적으로 검색 결과를 확인하고, 관련된 트윗과 사용자들을 손쉽게 찾을 수 있습니다.
                                 </div>
                             </Article>
-                            <ImgFlexWrap pd="0" wd="65%" space="space-between">
+                            <SpaceInTab pd="0" wd="65%" space="space-between">
                                 <ImgWd wd="49%" src="/asset/project/pj2/pj2-11.jpg"/>
                                 <ImgWd wd="49%" src="/asset/project/pj2/pj2-12.jpg"/>
-                            </ImgFlexWrap>
+                            </SpaceInTab>
                         </ImgFlexWrap>
                     </Reverse>
-                    <ImgFlexWrap space="center" mg="2vw 8vw 0 0">
-                        <Article pd="50px 50px 0 0" wd="40%">
+                    <ImgFlexWrap space="center" mg={ width >= tabWidth ? "2vw 8vw 0 0" : "0 5vw"}>
+                        <Article pd={ width >= tabWidth ? "50px 50px 0 0" : "20px 10vw 40px 0"} wd="40%">
                             <div>미구현된 기능이지만 추후 업데이트를 계획 중인 '상점' 탭은, 사용자가 검색어와 일치하는 상점명을 찾을 수 있도록 도와줍니다. 이 탭을 클릭하면 게시물뿐만 아니라 상점명으로도 검색할 수 있어, 관련 상점을 쉽게 찾을 수 있게 됩니다.</div>
                         </Article>
-                        <ImgWd wd="35%" src="/asset/project/pj2/pj2-13.jpg"/>
-                        <Deco wd="200px" right="-10%" bottom="10%" src="/asset/project/pj2/pj2-deco4.png"/>
+                        <ImgWd wd={ width >= tabWidth ? "35%" : "80%"} src="/asset/project/pj2/pj2-13.jpg"/>
+                        <Deco display={ width >= tabWidth ? "inline-blcok" : "none"} wd="200px" right="-10%" bottom="10%" src="/asset/project/pj2/pj2-deco4.png"/>
                     </ImgFlexWrap>
                     <Contents><img src="/asset/project/pj2/pj2-bg4.png"/></Contents>
                     <ImgFlexWrap pd="50px 5vw 100px" space="space-between">
-                        <ImgFlexWrap pd="0" wd="65%" space="space-between">
+                        <SpaceInTab pd="0" wd="65%" space="space-between">
                             <ImgWd wd="49%" src="/asset/project/pj2/pj2-14.jpg"/>
                             <ImgWd wd="49%" src="/asset/project/pj2/pj2-15.jpg"/>
-                        </ImgFlexWrap>
-                        <Article pd="0" wd="30%">
+                        </SpaceInTab>
+                        <Article pd={ width >= tabWidth ? "0" : "40px 0 0"} wd="30%">
                             <p>상점 정보</p>
                             <div>하단 탭의 [나의 마을] 혹은 트윗 상세보기 페이지에서 [상점 구경가기] 버튼을 누르면 나오는 상점 정보 페이지 입니다.<br/><br/>
                                 이 페이지에서는 사용자의 프로필 이미지, 이름, 이메일, 마을 소개 등의 정보가 보여지며, 사용자가 자신의 상점이라면 '정보 수정하기' 버튼을 클릭해 상점 정보를 수정할 수 있는 페이지로 이동할 수 있습니다. 또한, 이 페이지에서는 사용자가 작성한 게시글, 댓글, 좋아요 수를 확인할 수 있습니다.
@@ -183,8 +203,8 @@ function Animal(){
                         </Article>
                     </ImgFlexWrap>
                     <ImgFlexWrap pd="5px 5vw 100px" space="space-between">
-                        <ImgWd wd="32%" src="/asset/project/pj2/pj2-16.jpg"/>
-                        <Article pd="0" wd="60%">
+                        <ImgWd wd={ width >= tabWidth ? "32%" : "80%"} src="/asset/project/pj2/pj2-16.jpg"/>
+                        <Article pd={ width >= tabWidth ? "0" : "40px 0 0"} wd="60%">
                             <p>상점 정보 수정하기</p>
                             <div>나의 마을 페이지에서 [정보 수정하기] 버튼을 통해 나의 상점 정보 수정이 가능합니다.<br/><br/>
                                     사용자는 자신의 이름, 이메일, 비밀번호, 마을 소개 등을 수정할 수 있습니다. <br/>
