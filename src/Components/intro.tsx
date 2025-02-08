@@ -2,6 +2,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { isDarkAtom } from "../atom";
 import { breakpoints } from "../theme";
+import { animate, delay, motion } from "framer-motion";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -50,12 +51,17 @@ const Wrapper2 = styled(Wrapper)`
         ${mediaTablet}{ margin: 20px 5vw; }
     }
 `
-const BgImgWrap = styled.div<{isDark: boolean}>` position: relative; overflow-x: hidden;
-    ul{ opacity: ${({isDark}) => isDark ? 0.1 : 0.3 }; width: 100%; }
+const BgImgWrap = styled.div<{isDark: boolean}>`
+    position: relative; overflow-x: hidden;
+    ul{ 
+        opacity: ${({isDark}) => isDark ? 0.1 : 0.3 }; width: 100%; 
+    }
 `
-const BgImgs = styled.img`position: absolute; left: 0; top: 0; box-shadow: 5px 10px 15px rgba(0,0,0,0.2); border-radius: 0.5rem;`
-const BgImg1 = styled(BgImgs)`width:25%; left: 10%; top: 22%; ${mediaTablet}{width: 40%; top: 28%;}`
-const BgImg2 = styled(BgImgs)`width: 27%; left: 2%; top: 34%; ${mediaTablet}{width: 40%; left: -5%; top: 37%;}`
+const BgImgs = styled(motion.img)`
+    position: absolute; left: 0; top: 0; box-shadow: 5px 10px 15px rgba(0,0,0,0.2); border-radius: 0.5rem;
+`
+const BgImg1 = styled(BgImgs)`width:25%; left: 10%; top: 22%; ${mediaTablet}{width: 40%; top: 25%;}`
+const BgImg2 = styled(BgImgs)`width: 27%; left: 2%; top: 34%; ${mediaTablet}{width: 40%; left: -5%; top: 35%;}`
 const BgImg3 = styled(BgImgs)`width: 23%; left: 2%; top: 47%; ${mediaTablet}{width: 40%; left: -10%; top: 55%;}`
 const BgImg4 = styled(BgImgs)`width: 18%; left: 14%; top: 68%; ${mediaTablet}{width: 30%; top: 72%;}`
 const BgImg5 = styled(BgImgs)`width: 28%; left: 25%; top: 50%; ${mediaTablet}{width: 50%; left: 30%;} top: 80%;`
@@ -64,6 +70,12 @@ const BgImg7 = styled(BgImgs)`width: 32%; left: 68%; top: 60%; ${mediaTablet}{wi
 const BgImg8 = styled(BgImgs)`width: 22%; left: 80%; top: 30%; ${mediaTablet}{width: 40%; top: 30%;}`
 const BgImg9 = styled(BgImgs)`width: 25%; left: 60%; top: 22%; ${mediaTablet}{width: 30%; left: 60%; top: 20%;}`
 
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 , transition: { duration: 1, ease: "easeOut", delay: 0.7, } },
+   
+}
 
 function Intro(){
 
@@ -93,15 +105,24 @@ function Intro(){
             </Wrapper>
             <BgImgWrap isDark={isDark}>
                 <ul>
-                    <li><BgImg1 src="/asset/intro/design2.png" alt="design-bg"/></li>
-                    <li><BgImg2 src="/asset/intro/design3.png" alt="design-bg"/></li>
-                    <li><BgImg3 src="/asset/intro/design4.png" alt="design-bg"/></li>
-                    <li><BgImg4 src="/asset/intro/design5.png" alt="design-bg"/></li>
-                    <li><BgImg5 src="/asset/intro/design6.png" alt="design-bg"/></li>
-                    <li><BgImg7 src="/asset/intro/design8.png" alt="design-bg"/></li>
-                    <li><BgImg6 src="/asset/intro/design7.png" alt="design-bg"/></li>
-                    <li><BgImg9 src="/asset/intro/design10.png" alt="design-bg"/></li>
-                    <li><BgImg8 src="/asset/intro/design9.png" alt="design-bg"/></li>
+                    <li><BgImg1 src="/asset/intro/design2.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg2 src="/asset/intro/design3.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg3 src="/asset/intro/design4.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg4 src="/asset/intro/design5.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg5 src="/asset/intro/design6.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg7 src="/asset/intro/design8.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg6 src="/asset/intro/design7.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg9 src="/asset/intro/design10.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
+                    <li><BgImg8 src="/asset/intro/design9.png" alt="design-bg" 
+                        variants={fadeInUp} initial="hidden" whileInView="visible"/></li>
                 </ul>
                 <Wrapper2>
                     <h2><span>디자인을 이해하는 </span><span>개발자의 협업 방식</span></h2>

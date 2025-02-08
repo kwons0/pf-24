@@ -1,40 +1,21 @@
 import styled, { useTheme } from "styled-components";
 import { dataItems } from "../data";
 import { Link, useNavigate, } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import Page from "./page";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { isDarkAtom, isModalOpen } from "../atom";
 import { useEffect } from "react";
-import { ARROW, CURSOR, DARKTHEME, GITHUB, LIGHTTHEME, LINKICON, MAIL, NOTION, PHONE } from "./svg";
-import { breakpoints, darkTheme, lightTheme } from "../theme";
+import { ARROW, GITHUB, MAIL, NOTION, PHONE } from "./svg";
+import { breakpoints } from "../theme";
+import BoxTitle from "./boxTitle";
+
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
-
-const TitleWrap = styled.div`padding: 0 5% ;
-    
-    ${mediaTablet} { padding: 0 5vw 20vw; }
-`
-const Sub = styled.div`font-size: 23px; font-weight: 500; padding-bottom: 10px;`
-const Create = styled.span`
-    display: inline-block; position: relative;
-    padding: 14px 20px; color: ${(props)=>props.theme.mainColor}; line-height: 1;
-    background: #fff; font-weight: 600; font-size: 20px; border-radius: 50px;
-`
-
-const Cursor = styled.div`
-    position: absolute; right: -25%; bottom: -50%;
-    p{ font-size: 12px; color: #fff; padding: 5px 8px; background: ${(props)=>props.theme.mainColor};
-        margin: -8px 0 0 15px; font-weight: 500;
-    }
-`
-const Coffee = styled.div`color: ${(props)=>props.theme.gray4}; line-height: 1.5; margin: 30px 0 25px;`
-const Mode = styled.div`cursor:pointer;`
 
 const ContainerWrap = styled.div`
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     height: 1900px; flex-wrap: wrap; padding: 0 3vw; margin: 0;
-    ${mediaTablet}{ display:block; height: fit-content; padding: 5vw; }
+    ${mediaTablet}{ display:block; height: fit-content; padding: 0 5vw; }
 
     > ul{width: 48%;}
 `
@@ -42,10 +23,13 @@ const Container = styled.li<{isDark: boolean}>`
     background: ${({isDark})=> isDark ? "#292929" : "#FFFFFF"}; 
     padding: 5%; margin: 0 0 5% 0; border-radius: 3vw; width: 46%;
     position: relative; height: fit-content;
-    ${mediaTablet}{ width: 100%; margin: 5% auto; padding: 6vw 7vw; font-size: 15px;}
+    ${mediaTablet}{ 
+        width: 100%; margin: 5% auto; padding: 6vw 7vw; font-size: 15px;
+        &:first-child{ margin-top:0;}
+    }
     
     > h3{ 
-        font-size: 45px; color: ${(props)=> props.theme.textColor+"33"};  font-weight: 700;
+        font-size: 45px; color: ${(props)=> props.theme.textColor+"44"};  font-weight: 700;
         position: sticky; top: 20px; z-index: 10;
     }
     > p{ color: ${({theme, isDark})=> isDark ? theme.gray5 : theme.gray3};
@@ -132,13 +116,16 @@ const Line = styled.div<{isDark: boolean}>`
 const Line1 = styled(Line)`left: -15%; bottom: 40%; transform: rotate(-45deg);`
 const Line2 = styled(Line)`right: -15%; bottom: 0; transform: rotate(45deg);`
 
+
 interface IProjectPops {
     layoutId: string
 }
 
 
+
 function Box(){
 
+    // mapping items
     const stackItems = dataItems
     .filter(data => data.name === "stack")
     .flatMap(data => data.item);
@@ -147,35 +134,25 @@ function Box(){
     .filter(data => data.name === "project1")
     .flatMap(data => data.item);
 
+    // 모달 열기*닫기
     const navigate = useNavigate();
     const [ modalOpen, setModalOpen ] = useRecoilState(isModalOpen)
-
-    useEffect(() => {
-        setModalOpen(false)
-    }, [])
 
     const onProjectClick = ( url: string ) => {
         navigate(`/project/${url}`, { state: { modal: true } })
         setModalOpen(true)
     }
-    const isDark = useRecoilValue(isDarkAtom)
-    const setLightAtom = useSetRecoilState(isDarkAtom)
-    const toggleAtom = () => setLightAtom((prev)=>!prev)
-
+    const isDark = useRecoilValue(isDarkAtom);
     const theme = useTheme();
+
+    useEffect(() => {
+        setModalOpen(false)
+    }, [])
+
 
     return(
         <div>
-            <TitleWrap>
-                <div>
-                    <Sub>Becoming a</Sub>
-                    <Create>Frontend Developer
-                        <Cursor><CURSOR/><p>Kwons0</p></Cursor>
-                    </Create>
-                </div>
-                <Coffee>재밌게 보셨나요?<br/>저에게 흥미가 있으시다면 커피챗 해요!&nbsp;&nbsp;<LINKICON color={isDark? darkTheme.gray4 : lightTheme.gray4}/></Coffee>
-                <Mode onClick={toggleAtom}>{ isDark ? <DARKTHEME/> : <LIGHTTHEME/> }</Mode>
-            </TitleWrap>
+            <BoxTitle/>
             <ContainerWrap>
                 <Container1 isDark={isDark}>
                     <h3>Hello,</h3>

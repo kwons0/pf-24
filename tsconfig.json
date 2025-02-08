@@ -13,7 +13,8 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
-      "jsx": "react-jsx" // 자동 JSX 런타임 설정
+      "jsx": "react-jsx", // 자동 JSX 런타임 설정
+      "typeRoots": ["node_modules/@types", "src/types"]
     },
     "include": ["src"]
 }
