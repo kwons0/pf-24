@@ -54,7 +54,7 @@ const Container5 = styled(Container)`order: 7;
     ${mediaTablet}{ order: 6; }
 `;
 const EmptyContainer = styled.div`
-    height: 300px; order: 3;
+    height: 280px; order: 3;
     ${mediaTablet}{ display:none;}
 `
 const CBox = styled(Container)`
@@ -104,8 +104,9 @@ const Stack = styled(Item)`
 const Project1 = styled(Stack)<IProjectPops>`
     width: 22%; margin: 3% 17% 10% 0; cursor: pointer;
     &:nth-child(3n){ margin-right:0;}
+    &:nth-child(5n){margin-right: 17%;}
     p{ font-size: 16px;  padding: 18px 0 0;}
-    img{border-radius: 15px;}
+    img{border-radius: 13px;}
 `
 
 const Line = styled.div<{isDark: boolean}>`

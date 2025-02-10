@@ -10,6 +10,7 @@ import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
 import { CLOSE } from "./svg";
 import { breakpoints } from "../theme";
+import Luff from "../Routes/project/luff";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -22,7 +23,9 @@ const Overlay = styled(motion.div)`
 const ModalBox = styled(motion.div)<{isDark: boolean}>`
     position: fixed; left:50%; top: 50%;
     width: 85vw; max-width: 1000px; height: 90vh; z-index: 100; box-sizing: border-box; border-radius: 2rem;
-    background: ${({theme, isDark}) => isDark ? theme.gray1 : "#fff"}; overflow-y: scroll;
+    background: ${({theme, isDark}) => isDark ? theme.gray1 : "#fff"}; 
+    overflow-y: scroll; -ms-overflow-style: none;
+    &::-webkit-scrollbar{ display:none; }
     ${mediaTablet}{ width: 100vw; top: 55vh; border-radius: 1rem 1rem 0 0; }
 `;
 const CloseBtn = styled.span`
@@ -49,6 +52,7 @@ function Page(){
         switch ( projectId ) {
             case "pf": return <Pf/>;
             case "animal": return <Animal/>;
+            case "luff": return <Luff/>;
             case "netflix": return <Netflix/>;
             case "appjs": return <Appjs/>;
             case "bestseller": return <Bestseller/>;

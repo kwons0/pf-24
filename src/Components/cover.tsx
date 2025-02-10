@@ -103,7 +103,7 @@ function Cover(
             <li>
                 <Desc>{desc}</Desc>
                 <div>
-                    <SectionTitle>핵심 기능. </SectionTitle>
+                    <SectionTitle>핵심 내용. </SectionTitle>
                     <SectionContents>
                     {
                         contents.map( (value, index) => (

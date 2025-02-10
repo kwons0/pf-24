@@ -37,8 +37,8 @@ function Netflix(){
     return(
         <ProjectBox>
         <Cover 
-            bgimg="/asset/project/pj3/pj3-cover.png" 
-            favicon="/asset/project/pj3/pj3-favi.svg"
+            bgimg="/asset/project/pj4/pj4-cover.png" 
+            favicon="/asset/project/pj4/pj4-favi.svg"
             title="넷플릭스 Clone"
             siteLink="https://stackblitz.com/edit/reactstudy-a18-blueprint-2vcbkd-uukbe7?file=README.md" 
             githubLink="" 
@@ -46,21 +46,21 @@ function Netflix(){
             desc="넷플릭스 사이트를 클론하였습니다." 
             contents={ [ "컴포넌트 공통 관리", "헤더 애니메이션", "팝업" ] }
             date="2024.11, 5일" 
-            stacks="Next.js, TypeScript, Tailwindcss" 
+            stacks="Next.js, TypeScript, styled-components, Framer-motion" 
             icons={
                 [
                     { Component: GrayIcon, props: { src: "/asset/svg/reactjs.svg" } },
                     { Component: GrayIcon, props: { src: "/asset/svg/typescript.svg" } },
-                    { Component: GrayIcon, props: { src: "/asset/svg/framer-motion.svg" } },
                     { Component: STYLED_COMPONENTS, props: { color: iconColor } },
+                    { Component: GrayIcon, props: { src: "/asset/svg/framer-motion.svg" } },
                   ]
             }
         />
         <Contents>
             <ImgFlexWrap pd="0 5vw" space="space-between">
-                <ImgWd wd="32%" src="/asset/project/pj3/pj3-1.png"/>
-                <ImgWd wd="32%" src="/asset/project/pj3/pj3-2.png"/>
-                <ImgWd wd="32%" src="/asset/project/pj3/pj3-3.png"/>
+                <ImgWd wd="32%" src="/asset/project/pj4/pj4-1.png"/>
+                <ImgWd wd="32%" src="/asset/project/pj4/pj4-2.png"/>
+                <ImgWd wd="32%" src="/asset/project/pj4/pj4-3.png"/>
             </ImgFlexWrap>
             <Article pd="35px 5vw">
                 <p>효율적인 구조 설계</p>
@@ -72,8 +72,8 @@ function Netflix(){
             </Article>
             <ImgFlexWrap pd="50px 5vw" space="space-between">
                 <ImgFlexWrap pd="0" mg="0 0 35px" wd="65%" space="space-between">
-                    <ImgWd wd="49%" src="/asset/project/pj3/pj3-4.png"/>
-                    <ImgWd wd="49%" src="/asset/project/pj3/pj3-5.png"/>
+                    <ImgWd wd="49%" src="/asset/project/pj4/pj4-4.png"/>
+                    <ImgWd wd="49%" src="/asset/project/pj4/pj4-5.png"/>
                 </ImgFlexWrap>
                 <Article pd="0" wd="30%">
                     <p>부드러운 애니메이션 처리</p>
@@ -83,7 +83,7 @@ function Netflix(){
                 </Article>
             </ImgFlexWrap>
             <ImgFlexWrap pd="30px 5vw" space="space-between">
-                <ImgFlexWrap wd="40%" pd="0 0 35px"><ImgWd src="/asset/project/pj3/pj3-6.png"/></ImgFlexWrap>
+                <ImgFlexWrap wd="40%" pd="0 0 35px"><ImgWd src="/asset/project/pj4/pj4-6.png"/></ImgFlexWrap>
                 <Article pd="0 0 100px 0" wd="55%">
                     <div>헤더의 네비게이션 바와 검색창에 부드럽고 자연스러운 애니메이션 효과를 추가했습니다.<br/>
                     스크롤 위치에 따라 헤더의 배경색이 동적으로 변경되게 하였으며, 검색창 열기/닫기 시 표시 여부와 이동 효과를 부드럽게 처리했습니다. 또, 현재 활성화된 페이지를 동적으로 감지하고, 해당 메뉴 아래에 빨간색 원형 강조 효과(Circle)를 자연스럽게 렌더링했습니다.

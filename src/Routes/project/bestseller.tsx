@@ -59,8 +59,8 @@ function Bestseller(){
     return(
         <ProjectBox>
         <Cover 
-            bgimg="/asset/project/pj4/pj4-cover.png" 
-            favicon="/asset/project/pj4/pj4-favi.svg"
+            bgimg="/asset/project/pj5/pj5-cover.png" 
+            favicon="/asset/project/pj5/pj5-favi.svg"
             title="The New York Times Best Seller"
             siteLink="https://nextjs-bestseller-two.vercel.app/" 
             githubLink="https://github.com/kwons0/bestSeller" 
@@ -80,17 +80,17 @@ function Bestseller(){
         <Contents>
             <div>
                 <ImgGalleryWrap pd="50px 0 0">
-                    <ImgWd1 wd="22%" src="/asset/project/pj4/pj4-1.png"/>
-                    <ImgWd2 wd="22%" src="/asset/project/pj4/pj4-2.png"/>
-                    <ImgWd3 wd="22%" src="/asset/project/pj4/pj4-3.png"/>
-                    <ImgWd4 wd="22%" src="/asset/project/pj4/pj4-4.png"/>
-                    <ImgWd5 wd="22%" src="/asset/project/pj4/pj4-5.png"/>
+                    <ImgWd1 wd="22%" src="/asset/project/pj5/pj5-1.png"/>
+                    <ImgWd2 wd="22%" src="/asset/project/pj5/pj5-2.png"/>
+                    <ImgWd3 wd="22%" src="/asset/project/pj5/pj5-3.png"/>
+                    <ImgWd4 wd="22%" src="/asset/project/pj5/pj5-4.png"/>
+                    <ImgWd5 wd="22%" src="/asset/project/pj5/pj5-5.png"/>
                 </ImgGalleryWrap>
             </div>
             <ImgFlexWrap align="center" pd="80px 5vw 50px" space="space-between">
                 <ImgFlexWrapCol wd="65%">
-                    <ImgWd mg="0 0 20px" src="/asset/project/pj4/pj4-6.png"/>
-                    <ImgWd src="/asset/project/pj4/pj4-7.png"/>
+                    <ImgWd mg="0 0 20px" src="/asset/project/pj5/pj5-6.png"/>
+                    <ImgWd src="/asset/project/pj5/pj5-7.png"/>
                 </ImgFlexWrapCol>
                 <Article pd="35px 0 0" wd="30%">
                     <p>동적 페이지 구성</p>
@@ -98,7 +98,7 @@ function Bestseller(){
                 </Article>
             </ImgFlexWrap>
             <Contents>
-                <ImgFlexWrap pd="0 5vw"><ImgWd src="/asset/project/pj4/pj4-8.png"/></ImgFlexWrap>
+                <ImgFlexWrap pd="0 5vw"><ImgWd src="/asset/project/pj5/pj5-8.png"/></ImgFlexWrap>
                 <Article pd="35px 5vw 100px">
                     <p>Loading 페이지</p>
                     <div>외부 API에서 데이터를 비동기적으로 가져오고, 데이터를 받은 후 화면에 표시하였습니다. 이 덕분에 페이지 로드 시 데이터가 준비될 때까지 기다리며, 데이터를 로딩하는 동안 loading 상태를 사용하여 로딩 메시지를 표시하였습니다.</div>
