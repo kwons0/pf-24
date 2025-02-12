@@ -8,7 +8,7 @@ import { animate, delay, motion } from "framer-motion";
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
 
-const IntroWrap = styled.div`margin: 100px auto 25%; ${mediaTablet}{ margin: 5vw auto;}`
+const IntroWrap = styled.div`margin: 100px auto 20%; ${mediaTablet}{ margin: 5vw auto;}`
 const Title = styled.h1`
     text-align: center; line-height: 1.4;
     span{ color: ${(props)=> props.theme.gray5}; font-size: 20px; font-weight: 500;}

@@ -9,10 +9,7 @@ import Matter from "matter-js";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
-const TitleWrap = styled(motion.div)`
-    ${mediaTablet} { }
-`
-
+const TitleWrap = styled(motion.div)` padding: 0 0 20px;`
 const TitleBox = styled.div`padding: 0 5%; z-index: 10; position: relative; width: fit-content;
     ${mediaTablet} { padding: 0 5vw; }
 `;

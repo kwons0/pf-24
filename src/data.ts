@@ -1,7 +1,12 @@
-type ItemArr = {
+
+type ListArr = {
     "title": string;
-    "img": string;
-    "href": string;
+    "img": string;  
+}
+
+type ItemArr = {
+    "category": string;
+    "list": ListArr[];
 }
 
 type DataItem = {
@@ -9,35 +14,74 @@ type DataItem = {
     "item": ItemArr[];
 }
 
+
+type PjArr = {
+    "title": string;
+    "img": string;
+    "href": string;
+}
+
+type PjItem = {
+    "name": string;
+    "item": PjArr[];
+}
+
 export const dataItems: DataItem[] = [
     {
-        "name": "stack",
+        "name": "skill",
         "item": [
-            { "title": "HTML5", "img": "html5", "href": "" },
-            { "title": "CSS3", "img": "css3", "href": "" },
-            { "title": "JavaScript", "img": "javascript", "href": "" },
-            { "title": "jQuery", "img": "jquery", "href": "" },
-            { "title": "TypeScript", "img": "typescript", "href": "" },
-            { "title": "React.js", "img": "reactjs", "href": "" },
-            { "title": "Next.js", "img": "nextjs", "href": "" },
-            { "title": "Sass", "img": "sass", "href": "" },
-            { "title": "tailwindcss", "img": "tailwind", "href": "" },
-            { "title": "styled-components", "img": "styled-components", "href": "" },
-            { "title": "Framer-motion", "img": "framer-motion", "href": "" },
-            { "title": "JSON", "img": "json", "href": "" },
-            { "title": "webpack", "img": "webpack", "href": "" },
-            { "title": "Git", "img": "git", "href": "" },
-            { "title": "npm", "img": "npm", "href": "" },
-            { "title": "VisualStudio Code", "img": "vscode", "href": "" },
-            { "title": "IntelliJ", "img": "intellij", "href": "" },
-            { "title": "Figma", "img": "figma", "href": "" },
-            { "title": "GitHub", "img": "github", "href": "" },
-            { "title": "Bitbucket", "img": "bitbucket", "href": "" },
-            { "title": "Adobe Photoshop", "img": "photoshop", "href": "" },
-            { "title": "Adobe Illustrator", "img": "illustrator", "href": "" },
-            { "title": "Adobe Premiere Pro", "img": "premiere", "href": "" }
+            {
+                "category": "Language",
+                "list": [
+                    { "title": "HTML5", "img": "html5"},
+                    { "title": "CSS3", "img": "css3"},
+                    { "title": "JavaScript", "img": "javascript"},
+                    { "title": "TypeScript", "img": "typescript"},
+                    { "title": "JSON", "img": "json"},
+                ]
+            },
+            {
+                "category": "FrontEnd",
+                "list": [
+                    { "title": "React.js", "img": "reactjs"},
+                    { "title": "Next.js", "img": "nextjs"},
+                    { "title": "jQuery", "img": "jquery"},
+                    { "title": "Sass", "img": "sass"},
+                    { "title": "tailwindcss", "img": "tailwind"},
+                    { "title": "styled-components", "img": "styled-components"},
+                    { "title": "Framer-motion", "img": "framer-motion"},
+                ]
+            },
+            {
+                "category": "Build Tools",
+                "list": [
+                    { "title": "webpack", "img": "webpack"},
+                    { "title": "npm", "img": "npm"},
+                ]
+            },            
+            {
+                "category": "Version Control",
+                "list": [
+                    { "title": "Git", "img": "git"},
+                    { "title": "GitHub", "img": "github"},
+                    { "title": "Bitbucket", "img": "bitbucket"},
+                ]
+            },
+            {
+                "category": "Design & Editing",
+                "list": [
+                    { "title": "Figma", "img": "figma"},
+                    { "title": "Adobe Photoshop", "img": "photoshop"},
+                    { "title": "Adobe Illustrator", "img": "illustrator"},
+                    { "title": "Adobe Premiere Pro", "img": "premiere"}
+                ]
+            },
         ]
     },
+]
+
+
+export const pjItems: PjItem[] = [
     {
         "name": "project1",
         "item": [

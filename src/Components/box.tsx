@@ -1,5 +1,5 @@
 import styled, { useTheme } from "styled-components";
-import { dataItems } from "../data";
+import { dataItems, pjItems } from "../data";
 import { Link, useNavigate, } from "react-router-dom";
 import Page from "./page";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -29,7 +29,7 @@ const Container = styled.li<{isDark: boolean}>`
     }
     
     > h3{ 
-        font-size: 45px; color: ${(props)=> props.theme.textColor+"44"};  font-weight: 700;
+        font-size: 50px; color: ${(props)=> props.theme.textColor+"44"};  font-weight: 700;
         position: sticky; top: 20px; z-index: 10;
     }
     > p{ color: ${({theme, isDark})=> isDark ? theme.gray5 : theme.gray3};
@@ -40,8 +40,9 @@ const Container1 = styled(Container)`order: 4; height: fit-content;
     > p{ padding: 20px 0;}
     ${mediaTablet}{ order: 1; }
 `;
-const Container2 = styled(Container)`order: 1; margin-top: 250px;
-    >p{ padding: 20px 0 55spx;}  
+const Container2 = styled(Container)`order: 1; 
+margin-top: 200px;
+    padding-bottom: 30px;
     ${mediaTablet}{ order: 3; margin-top: 0;}
 `;
 const Container3 = styled(Container)`order: 6;
@@ -54,7 +55,7 @@ const Container5 = styled(Container)`order: 7;
     ${mediaTablet}{ order: 6; }
 `;
 const EmptyContainer = styled.div`
-    height: 280px; order: 3;
+    height:40px; order: 3;
     ${mediaTablet}{ display:none;}
 `
 const CBox = styled(Container)`
@@ -96,13 +97,35 @@ const Item = styled.li`
     text-align: center; display: flex; flex-direction: column; align-items: center;
     p{line-height:1.5;}
 `
-const Stack = styled(Item)`
-    width: 12%; margin: 0 10% 5% 0;
-    &:nth-child(5n){ margin-right:0;}
-    p{ font-size: 12px; padding: 15px 0; line-height: 1.2;}
+const Skills = styled(Item)`
+    display: inline-flex; width: 100%;
+    &:first-child{ > div {margin-top: 30px;}}
+    &:nth-child(3){ width: 37%; 
+        > ul > li{ width: 30%; margin: 0 30% 30% 0;
+            &:last-child{ margin-right:0;}
+        }
+    }
+    &:nth-child(4){ width: 58%; margin-left: 5%;
+        > ul > li{ 
+            width: 20%; margin: 0 20% 20% 0;
+            &:last-child{ margin-right:0;}
+        }
+    }
+
+    > div{ 
+        text-align: left; width: 100%; color: ${(props)=>props.theme.textColor+"29"}; 
+        margin: 0 0 20px; font-size:18px; font-weight:600;
+    }
+    > ul{ width: 100%; }
+    
 `
-const Project1 = styled(Stack)<IProjectPops>`
-    width: 22%; margin: 3% 17% 10% 0; cursor: pointer;
+const SkillItem = styled.li`
+    width: 12%; margin: 0 10% 10% 0; display: flex; flex-direction: column; align-items: center;
+    &:nth-child(5n){ margin-right:0;}
+    p{ font-size: 12px; padding: 15px 0 0; line-height: 1.2;  text-align: center;}
+`
+const Project1 = styled.div<IProjectPops>`
+    width: 22%; margin: 3% 17% 10% 0; cursor: pointer; text-align: center;
     &:nth-child(3n){ margin-right:0;}
     &:nth-child(5n){margin-right: 17%;}
     p{ font-size: 16px;  padding: 18px 0 0;}
@@ -114,7 +137,7 @@ const Line = styled.div<{isDark: boolean}>`
     border: 3px dashed ${({isDark})=> isDark ? "#292929" : "#FFFFFF"}; outline-offset: 5px;
     ${mediaTablet}{ display: none;}
 `
-const Line1 = styled(Line)`left: -15%; bottom: 40%; transform: rotate(-45deg);`
+const Line1 = styled(Line)`left: -15%; bottom: 10%; transform: rotate(-45deg);`
 const Line2 = styled(Line)`right: -15%; bottom: 0; transform: rotate(45deg);`
 
 
@@ -126,12 +149,9 @@ interface IProjectPops {
 
 function Box(){
 
-    // mapping items
-    const stackItems = dataItems
-    .filter(data => data.name === "stack")
-    .flatMap(data => data.item);
+    const skillData = dataItems.find(item => item.name === "skill")?.item || [];
 
-    const project1Items = dataItems
+    const projectItems = pjItems
     .filter(data => data.name === "project1")
     .flatMap(data => data.item);
 
@@ -180,30 +200,36 @@ function Box(){
                     </ul>
                 </CBox>
                 <Container2 isDark={isDark}>
-                    <h3>STACK</h3>
-                    <p>A hub for those who married technology with the liberal arts</p>
-                    <ItemBox>
-                        {
-                            stackItems.map( (data, idx) => (
-                                <Stack key={idx}>
-                                    {
-                                        data.img !== "" ? ( <>
-                                            <img src={"/asset/svg/"+data.img+".svg"} alt={data.img}/>
-                                            <p>{data.title}</p>
-                                        </> ) : null
-                                    }
-                                </Stack>
-                            ))
-                        }
-                    </ItemBox>
+                    <h3>Skills</h3>
+                    <ul>
+                        {skillData.map((categoryData, idx) => (
+                            <Skills key={idx}>
+                                <div>{categoryData.category}</div>
+                                <ItemBox>
+                                    {categoryData.list.map((skill, skillIdx) => (
+                                        <SkillItem key={skillIdx}>
+                                            {skill.img && (
+                                                <>
+                                                    <img src={`/asset/svg/${skill.img}.svg`} alt={skill.img} />
+                                                    <p>{skill.title}</p>
+                                                </>
+                                            )}
+                                        </SkillItem>
+                                    ))}
+                                </ItemBox>
+                            </Skills>
+                        ))}
+                    </ul>
+
+
                 </Container2>
 
                 <Container3 isDark={isDark}>
                     <h3>Project(1)</h3>
-                    <p>기여도 100%</p>
+                    <p>2024 ~ 2025 기여도 100% 개인 프로젝트</p>
                     <ItemBox>
                         {
-                            project1Items.map( (data, idx) => (
+                            projectItems.map( (data, idx) => (
                                 <Project1 key={idx}
                                     onClick={() => onProjectClick(data.href)}
                                     layoutId={data.href}
