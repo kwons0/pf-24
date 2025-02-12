@@ -66,10 +66,11 @@ function Luff(){
                 title="Luff 자사몰 리뉴얼"
                 siteLink="https://luff.kr/" 
                 githubLink="" 
-                notionLink="https://www.notion.so/The-New-York-Times-Best-Seller-192f26733a5f80ae8c45d114899321fc?pvs=4" 
+                notionLink="https://www.notion.so/Luff-198f26733a5f80deacbddb221f8cd716?pvs=4" 
                 desc="브랜드 Luff의 자사몰을 리뉴얼 하였습니다." 
-                contents={ [ "오가닉 검색", "자사몰 혜택 강조", "UX 설계", "다양한 옵션 형태", "카테고리 구조화", "사이트 개인화" ] }
+                contents={ [ "검색 순위", "자사몰 혜택 강조", "UX 설계", "다양한 옵션 형태", "카테고리 구조화", "사이트 개인화" ] }
                 date="2024.3 ~ 2024.06, 3개월" 
+                rate="기획 100%, 디자인 100%, 개발 100%"
                 stacks="Javascript, CSS3" 
                 icons={
                     [

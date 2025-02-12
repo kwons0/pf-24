@@ -61,11 +61,11 @@ function Pf(){
                 title="2025.Portfolio"
                 siteLink="" 
                 githubLink="https://github.com/kwons0/pf-24" 
-                notionLink="https://www.notion.so/The-New-York-Times-Best-Seller-192f26733a5f80ae8c45d114899321fc?pvs=4" 
+                notionLink="https://www.notion.so/2025-Portfolio-198f26733a5f8073a72ac22c1c9f3d86?pvs=4" 
                 desc="2025년 작성된 포트폴리오 입니다." 
                 contents={ [ "다크/라이트모드", "공통 컴포넌트", "fade-up", "반응형 설계", "모달" ] }
-
                 date="2025.1 ~ 2024.02, 1개월" 
+                rate="기획 100%, 디자인 100%, 개발 100%"
                 stacks="React.js, TypeScript, styled-components, Framer-motion" 
                 icons={
                     [

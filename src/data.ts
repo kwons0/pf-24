@@ -46,7 +46,7 @@ export const dataItems: DataItem[] = [
             { "title": "2025.PF", "img": "project1-1", "href": "pf" },
             { "title": "넷플릭스 Clone", "img": "project1-4", "href": "netflix" },
             { "title": "Best Seller", "img": "project1-5", "href": "bestseller" },
-            { "title": "ReactNative.app", "img": "project1-6", "href": "appjs" },
+            // { "title": "ReactNative.app", "img": "project1-6", "href": "appjs" },
         ]
     }
 ]

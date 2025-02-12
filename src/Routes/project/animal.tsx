@@ -81,7 +81,8 @@ function Animal(){
                 notionLink="https://www.notion.so/192f26733a5f80ce9a00fe5a1746d5c1?pvs=4" 
                 desc="동물의 숲 캐릭터들이 중고거래 하는 컨셉의 웹 사이트 입니다." 
                 contents={ [ "회원가입, 로그인", "내 정보 수정", "글쓰기, 답글 쓰기", "검색" ] }
-                date="2024.12, 2주" 
+                date="2024.12, 2주"
+                rate="기획 100%, 디자인 100%, 개발 100%"
                 stacks="Next.js, TypeScript, Tailwindcss" 
                 icons={
                     [

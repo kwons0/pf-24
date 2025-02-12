@@ -200,7 +200,7 @@ function Box(){
 
                 <Container3 isDark={isDark}>
                     <h3>Project(1)</h3>
-                    <p>A hub for those who married technology with the liberal arts</p>
+                    <p>기여도 100%</p>
                     <ItemBox>
                         {
                             project1Items.map( (data, idx) => (

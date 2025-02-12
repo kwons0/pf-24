@@ -68,6 +68,7 @@ function Bestseller(){
             desc="베스트셀러 책을 리스트별로 살펴볼 수 있는 사이트 입니다." 
             contents={ [ "API", "슬라이드" ] }
             date="2024.11, 1일" 
+            rate="디자인 100%, 개발 100%"
             stacks="Next.Js, CSS3" 
             icons={
                 [

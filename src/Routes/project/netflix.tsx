@@ -46,6 +46,7 @@ function Netflix(){
             desc="넷플릭스 사이트를 클론하였습니다." 
             contents={ [ "컴포넌트 공통 관리", "헤더 애니메이션", "팝업" ] }
             date="2024.11, 5일" 
+            rate="기획 100%, 디자인 100%, 개발 100%"
             stacks="Next.js, TypeScript, styled-components, Framer-motion" 
             icons={
                 [
