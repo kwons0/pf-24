@@ -67,7 +67,6 @@ function Animal(){
 
     const width = FindWindowWidth();
     const tabWidth = Number(breakpoints.tablet.split('px')[0])
-    console.log( width, Number(breakpoints.tablet.split('px')[0]) )
 
 
     return(
@@ -83,7 +82,7 @@ function Animal(){
                 contents={ [ "회원가입, 로그인", "내 정보 수정", "글쓰기, 답글 쓰기", "검색" ] }
                 date="2024.12, 2주"
                 rate="기획 100%, 디자인 100%, 개발 100%"
-                stacks="Next.js, TypeScript, Tailwindcss" 
+                skills="Next.js, TypeScript, Tailwindcss" 
                 icons={
                     [
                         { Component: NEXTJS, props: { color: iconColor } },

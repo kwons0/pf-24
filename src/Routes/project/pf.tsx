@@ -66,7 +66,7 @@ function Pf(){
                 contents={ [ "다크/라이트모드", "공통 컴포넌트", "fade-up", "반응형 설계", "모달" ] }
                 date="2025.1 ~ 2024.02, 1개월" 
                 rate="기획 100%, 디자인 100%, 개발 100%"
-                stacks="React.js, TypeScript, styled-components, Framer-motion" 
+                skills="React.js, TypeScript, styled-components, Framer-motion" 
                 icons={
                     [
                         { Component: GrayIcon, props: { src: "/asset/svg/reactjs.svg" } },

@@ -69,7 +69,7 @@ function Bestseller(){
             contents={ [ "API", "슬라이드" ] }
             date="2024.11, 1일" 
             rate="디자인 100%, 개발 100%"
-            stacks="Next.Js, CSS3" 
+            skills="Next.Js, CSS3" 
             icons={
                 [
                     { Component: NEXTJS, props: { color: iconColor } },

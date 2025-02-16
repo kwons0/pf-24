@@ -71,7 +71,7 @@ function Luff(){
                 contents={ [ "검색 순위", "자사몰 혜택 강조", "UX 설계", "다양한 옵션 형태", "카테고리 구조화", "사이트 개인화" ] }
                 date="2024.3 ~ 2024.06, 3개월" 
                 rate="기획 100%, 디자인 100%, 개발 100%"
-                stacks="Javascript, CSS3" 
+                skills="Javascript, CSS3" 
                 icons={
                     [
                         { Component: GrayIcon, props: { src: "/asset/svg/javascript.svg" } },

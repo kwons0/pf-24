@@ -75,13 +75,13 @@ interface ICover {
     contents: string[];
     date : string;
     rate: string;
-    stacks : string;
+    skills : string;
     icons : IIcons[];
 }
 
 
 function Cover(
-    {bgimg, favicon, title, siteLink, githubLink, notionLink, desc, contents, date, rate, stacks, icons }: ICover
+    {bgimg, favicon, title, siteLink, githubLink, notionLink, desc, contents, date, rate, skills, icons }: ICover
 ){
 
     const isDark = useRecoilValue(isDarkAtom);
@@ -117,7 +117,7 @@ function Cover(
             <li style={{"minWidth": "35%"}}>
                 <div><SectionTitle>Date.</SectionTitle><span>{date}</span></div>
                 <div><SectionTitle>Contribution rate.</SectionTitle><span>{rate}</span></div>
-                <div><SectionTitle>Stack.</SectionTitle><span>{stacks}</span></div>
+                <div><SectionTitle>Skills.</SectionTitle><span>{skills}</span></div>
                 <IconBox>
                 {icons.map((icon, index) => {
                     const { Component, props } = icon;
