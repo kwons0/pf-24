@@ -95,7 +95,7 @@ function Bestseller(){
                 </ImgFlexWrapCol>
                 <Article pd="35px 0 0" wd="30%">
                     <p>동적 페이지 구성</p>
-                    <div>Category 컴포넌트에서 URL 파라미터(useParams)를 사용하여 특정 카테고리의 데이터를 동적으로 받아오는 점이 좋습니다. id를 통해 API에서 관련 데이터를 가져와서 카테고리별로 보여주는 방식이 사용자에게 맞춤형 정보를 제공할 수 있습니다.</div>
+                    <div>Category 컴포넌트에서 URL 파라미터(useParams)를 사용하여 특정 카테고리의 데이터를 동적으로 받아 처리하였습니다. id를 통해 API에서 관련 데이터를 가져와서 카테고리별로 보여주는 방식이 사용자에게 맞춤형 정보를 제공할 수 있습니다.</div>
                 </Article>
             </ImgFlexWrap>
             <Contents>
