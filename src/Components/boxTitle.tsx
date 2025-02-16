@@ -53,7 +53,7 @@ function BoxTitle() {
                             <Cursor><CURSOR/><p>Kwons0</p></Cursor>
                         </Create>
                     </div>
-                    <Coffee>재밌게 보셨나요?<br/>저에게 흥미가 있으시다면 커피챗 해요!&nbsp;&nbsp;<LINKICON color={isDark? darkTheme.gray4 : lightTheme.gray4}/></Coffee>
+                    <Coffee>재밌게 보셨나요?<br/>저에게 흥미가 있으시다면 <a href="tel:+821044300820">커피챗 해요!&nbsp;&nbsp;<LINKICON color={isDark? darkTheme.gray4 : lightTheme.gray4}/></a></Coffee>
                     <Mode onClick={toggleAtom}>{ isDark ? <DARKTHEME/> : <LIGHTTHEME/> }</Mode>
                 </TitleBox>
 

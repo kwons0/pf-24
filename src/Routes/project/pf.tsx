@@ -97,8 +97,9 @@ function Pf(){
                 <ImgFlexWrap space="space-between" align="center" mg="100px 0 0 0">
                     <ImgFlexWrap wd="70%"><ImgWd wd={width >= tabWidth ? "100%" : "140%"} mg={width >= tabWidth ? "0" : "0 0 0 -20%"} src="/asset/project/pj1/pj1-4.png"/></ImgFlexWrap>
                     <Article pd={ width >= tabWidth ? "0 5vw 0 0" : "40px 5vw"} wd="25%">
-                        <p>페이지 구성</p>
-                        <div>상단에는 저에 대한 간략한 소개글이 있으며, 하단에는 인삿말과 기술 스택, 연락처, 그리고 프로젝트를 자세히 확인할 수 있는 박스들로 구성되어 있습니다.</div>
+                        <p>fade-up</p>
+                        <div>디자인 경험을 갖춘 개발자로서의 타이틀을 강조하기 위해, 직접 디자인하고 개발까지 100% 완료한 프로젝트의 일부 디자인을 배경으로 활용했습니다. 
+                        스크롤할 때 자연스럽게 드러나도록 구성하여, 화면을 탐색하면서도 제가 작업한 디자인을 직관적으로 암시할 수 있도록 했습니다.</div>
                     </Article>
                 </ImgFlexWrap>
                 <ImgFlexWrap space="space-between" align="center" pd="100px 5vw 0">
@@ -129,11 +130,12 @@ function Pf(){
                 </div>
                 <div>
                     <Flex style={{margin: width >= tabWidth ? "100px 0 0 -10%" : "100px 0 0", width: width >= tabWidth ? "120%": "100%"}} space="space-between">
-                        <ImgWd wd={width >= tabWidth ? "19%" : "33.3%"} src="/asset/project/pj1/pj1-10-1.png"/>
-                        <ImgWd wd={width >= tabWidth ? "19%" : "33.3%"} src="/asset/project/pj1/pj1-10-2.png"/>
-                        <ImgWd wd={width >= tabWidth ? "19%" : "33.3%"} src="/asset/project/pj1/pj1-10-3.png"/>
-                        <ImgWd wd={width >= tabWidth ? "19%" : "33.3%"} src="/asset/project/pj1/pj1-10-4.png"/>
-                        <ImgWd wd={width >= tabWidth ? "19%" : "33.3%"} src="/asset/project/pj1/pj1-10-5.png"/>
+                        <ImgWd mg={width >= tabWidth ? "0" : "0 5% 5% 0"} wd={width >= tabWidth ? "16%" : "30%"} src="/asset/project/pj1/pj1-10-1.png"/>
+                        <ImgWd mg={width >= tabWidth ? "0" : "0 5% 5% 0"} wd={width >= tabWidth ? "16%" : "30%"} src="/asset/project/pj1/pj1-10-2.png"/>
+                        <ImgWd mg={width >= tabWidth ? "0" : "0 0 5% 0"} wd={width >= tabWidth ? "16%" : "30%"} src="/asset/project/pj1/pj1-10-3.png"/>
+                        <ImgWd mg={width >= tabWidth ? "0" : "0 5% 5% 0"} wd={width >= tabWidth ? "16%" : "30%"} src="/asset/project/pj1/pj1-10-4.png"/>
+                        <ImgWd mg={width >= tabWidth ? "0" : "0 5% 5% 0"} wd={width >= tabWidth ? "16%" : "30%"} src="/asset/project/pj1/pj1-10-5.png"/>
+                        <ImgWd mg={width >= tabWidth ? "0" : "0 0 5% 0"} wd={width >= tabWidth ? "16%" : "30%"} src="/asset/project/pj1/pj1-10-6.png"/>
                     </Flex>
                     <Article pd={width >= tabWidth ?"40px 0 100px": "40px 5vw"} wd="70%" mg="0 auto">
                         <p>반응형 설계</p>
