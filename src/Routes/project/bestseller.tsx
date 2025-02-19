@@ -66,7 +66,7 @@ function Bestseller(){
             githubLink="https://github.com/kwons0/bestSeller" 
             notionLink="https://www.notion.so/The-New-York-Times-Best-Seller-192f26733a5f80ae8c45d114899321fc?pvs=4" 
             desc="베스트셀러 책을 리스트별로 살펴볼 수 있는 사이트 입니다." 
-            contents={ [ "API", "슬라이드" ] }
+            contents={ [ "동적 페이지 구성", "Loading" ] }
             date="2024.11, 1일" 
             rate="디자인 100%, 개발 100%"
             skills="Next.Js, CSS3" 
@@ -102,8 +102,8 @@ function Bestseller(){
             <Contents>
                 <ImgFlexWrap pd="0 5vw"><ImgWd src="/asset/project/pj5/pj5-8.png"/></ImgFlexWrap>
                 <Article pd="35px 5vw 100px">
-                    <p>Loading 페이지</p>
-                    <div>외부 API에서 데이터를 비동기적으로 가져오고, 데이터를 받은 후 화면에 표시하였습니다. 이 덕분에 페이지 로드 시 데이터가 준비될 때까지 기다리며, 데이터를 로딩하는 동안 loading 상태를 사용하여 로딩 메시지를 표시하였습니다.</div>
+                    <p>Loading 상태</p>
+                    <div>API 요청이 끝나기 전까지 비어 있는 화면을 방지하고자 로딩화면을 통해 데이터가 로딩 중임을 명확하게 보여주었습니다. 이는 API 응답이 느리거나 네트워크 지연이 발생할 경우 사용자에게 대기 상태를 알려주고, 페이지가 갑자기 깨지거나 아무것도 보이지 않는 상황을 방지하였습니다.</div>
                 </Article>
             </Contents>
         </Contents>
