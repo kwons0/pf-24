@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "../atom";
-import { useRef, useState, useEffect } from "react";
 import { CURSOR, DARKTHEME, LIGHTTHEME, LINKICON } from "./svg";
 import { breakpoints, darkTheme, lightTheme } from "../theme";
-import Matter from "matter-js";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
-const TitleWrap = styled(motion.div)` padding: 0 0 20px;`
+const TitleWrap = styled.div` padding: 0 0 20px;`
 const TitleBox = styled.div`padding: 0 5%; z-index: 10; position: relative; width: fit-content;
     ${mediaTablet} { padding: 0 5vw; }
 `;
@@ -27,13 +24,6 @@ const Cursor = styled.div`
 `
 const Coffee = styled.div`color: ${(props)=>props.theme.gray4}; line-height: 1.5; margin: 30px 0 25px;`
 const Mode = styled.div`cursor:pointer; display:inline-block; width: fit-content;`
-
-const BadgeBox = styled.div``
-const Badge = styled(motion.span)`
-    display: inline-block; position: absolute;
-    padding: 14px 20px; line-height: 1; color:  ${(props)=>props.theme.bgColor};
-    background: #292929; font-size: 20px; border-radius: 50px;
-`;
 
 function BoxTitle() {
 

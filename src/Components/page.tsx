@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Pf from '../Routes/project/pf';
-import Appjs from '../Routes/project/appjs';
 import Netflix from '../Routes/project/netflix';
 import Animal from '../Routes/project/animal';
 import Bestseller from '../Routes/project/bestseller';
@@ -54,7 +53,6 @@ function Page(){
             case "animal": return <Animal/>;
             case "luff": return <Luff/>;
             case "netflix": return <Netflix/>;
-            case "appjs": return <Appjs/>;
             case "bestseller": return <Bestseller/>;
             default: return null;
         }

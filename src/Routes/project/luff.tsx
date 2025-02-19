@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Cover from "../../Components/cover";
-import { CAFE24, NEXTJS, VERCEL } from "../../Components/svg";
+import { CAFE24 } from "../../Components/svg";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../../atom";
 import { breakpoints, darkTheme, lightTheme } from "../../theme";
