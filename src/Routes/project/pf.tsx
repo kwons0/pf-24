@@ -33,8 +33,13 @@ const ImgFlexWrap = styled(Flex)<{pd?: string,mg?: string, wd?: string}>` positi
     ${mediaTablet}{ width: 100%; }
 `
 
-
-
+const Reverse = styled(ImgFlexWrap)`
+    ${mediaTablet}{ 
+        display: flex; flex-direction: column;
+        & > *:nth-child(1){ order: 2;};
+        & > *:nth-child(2){ order: 1;};
+     }
+`
 
 function FindWindowWidth(){
     const [width, setWidth] = useState(window.innerWidth);
@@ -63,7 +68,7 @@ function Pf(){
                 githubLink="https://github.com/kwons0/pf-24" 
                 notionLink="https://www.notion.so/2025-Portfolio-198f26733a5f8073a72ac22c1c9f3d86?pvs=4" 
                 desc="2025년 작성된 포트폴리오 입니다." 
-                contents={ [ "다크/라이트모드", "공통 컴포넌트", "fade-up", "반응형 설계", "모달" ] }
+                contents={ [ "언어 구성", "상태 관리", "반응형 설계", "컴포넌트 재사용" ] }
                 date="2025.1 ~ 2024.02, 1개월" 
                 rate="기획 100%, 디자인 100%, 개발 100%"
                 skills="React.js, TypeScript, styled-components, Framer-motion" 
@@ -83,44 +88,43 @@ function Pf(){
                         <ImgWd wd="49%" src="/asset/project/pj1/pj1-2.png"/>
                     </ImgFlexWrap>
                     <Article pd={width >= tabWidth ? "20px 5vw 0 0": "20px 5vw"} wd="35%">
-                        <p>페이지 구성</p>
-                        <div>상단에는 저에 대한 간략한 소개글이 있으며, 하단에는 인삿말과 기술 스택, 연락처, 그리고 프로젝트를 자세히 확인할 수 있는 박스들로 구성되어 있습니다.</div>
+                        <p>언어 구성</p>
+                        <div>페이지는 인터랙티브한 UI로 구성하려 했기 때문에 SPA 개발에 최적화된 React.js 라이브러리를 사용하였습니다.<br/>
+                        반응형과 라이트/다크 모드 구성을 위해  props를 받아서 동적으로 스타일링이 가능한 CSS-in-JS 방식의 Styled-components를 채택하였습니다. 자연스러운 fade-up 기능과 모달 기능을 위해 framer-motion을 함께 사용하였습니다.</div>
                     </Article>
                 </ImgFlexWrap>
                 <div>
                     <ImgFlexWrap wd="70%" mg="100px auto 0"><ImgWd src="/asset/project/pj1/pj1-3.png"/></ImgFlexWrap>
                     <Article pd={width >= tabWidth ? "40px 0 0 0": "40px 5vw"} wd="70%" mg="0 auto">
-                        <p>연도별 Mimoji</p>
-                        <div>또한, 2015년, 2019년, 2021년 각 시기의 저를 미모지로 표현해 보았습니다. 당시 활동했던 분야와 사용했던 프로그램들을 강조하기 위해, 노트북에 해당 로고 스티커를 부착하여 직관적으로 전달할 수 있도록 디자인했습니다.</div>
+                        <p>인트로</p>
+                        <div>* 연도별 Mimoji<br/>2015년, 2019년, 2021년 각 시기의 저를 미모지로 표현해 보았습니다. 당시 활동했던 분야와 사용했던 프로그램들을 강조하기 위해, 노트북에 해당 로고 스티커를 부착하여 직관적으로 전달할 수 있도록 디자인했습니다.</div>
                     </Article>
                 </div>
                 <ImgFlexWrap space="space-between" align="center" mg="100px 0 0 0">
-                    <ImgFlexWrap wd="70%"><ImgWd wd={width >= tabWidth ? "100%" : "140%"} mg={width >= tabWidth ? "0" : "0 0 0 -20%"} src="/asset/project/pj1/pj1-4.png"/></ImgFlexWrap>
-                    <Article pd={ width >= tabWidth ? "0 5vw 0 0" : "40px 5vw"} wd="25%">
-                        <p>fade-up</p>
-                        <div>디자인 경험을 갖춘 개발자로서의 타이틀을 강조하기 위해, 직접 디자인하고 개발까지 100% 완료한 프로젝트의 일부 디자인을 배경으로 활용했습니다. 
+                    <ImgFlexWrap wd="70%"><ImgWd wd={width >= tabWidth ? "100%" : "140%"} mg={width >= tabWidth ? "0 0 0 -10%" : "0 0 0 -20%"} src="/asset/project/pj1/pj1-4.png"/></ImgFlexWrap>
+                    <Article pd={ width >= tabWidth ? "0 5vw 0 0" : "40px 5vw"} wd="35%">
+                        <div>* 배경 이미지<br/>디자인 경험을 갖춘 개발자로서의 타이틀을 강조하기 위해, 직접 디자인하고 개발까지 100% 완료한 프로젝트의 일부 디자인을 배경으로 활용했습니다.<br/>
                         스크롤할 때 자연스럽게 드러나도록 구성하여, 화면을 탐색하면서도 제가 작업한 디자인을 직관적으로 암시할 수 있도록 했습니다.</div>
                     </Article>
                 </ImgFlexWrap>
-                <ImgFlexWrap space="space-between" align="center" pd="100px 5vw 0">
-                    <ImgFlexWrap wd="40%"><ImgWd src="/asset/project/pj1/pj1-5.png"/></ImgFlexWrap>
-                    <Article pd="40px 0 0" wd="55%">
-                        <p>다크/라이트 모드</p>
-                        <div>사용자 환경에 따라 최적의 경험을 제공할 수 있도록 다크 모드와 라이트 모드를 모두 지원하며, 모드 전환 시에도 배경과 콘텐츠가 자연스럽게 어우러지도록 했습니다.</div>
+                <Reverse space="space-between" align="flex-end" pd="100px 5vw 0">
+                    <Article pd="40px 0 0" wd="45%">
+                        <p>상태 관리</p>
+                        <div>다크/라이트 모드는 Recoil의 Atom(전역 상태 저장소)을 활용하여 관리됩니다. 테마 변경 시 ThemeProvider를 사용하여 테마를 적용하도록 구성했습니다. 이를 통해 사용자가 모드를 변경하면 즉시 UI에 반영됩니다.</div>
                     </Article>
-                </ImgFlexWrap>
-                <ImgFlexWrap space="space-between" align="center" pd="100px 5vw 0">
-                    <div style={{width: width >= tabWidth ? "50%" : "100%"}}>
-                        <ImgWd mg="0 0 4% 0" src="/asset/project/pj1/pj1-6.png"/>
-                        <ImgWd src="/asset/project/pj1/pj1-7.png"/>
-                        </div>
+                    <ImgFlexWrap wd="40%"><ImgWd src="/asset/project/pj1/pj1-5.png"/></ImgFlexWrap>
+                </Reverse>
+                <Reverse space="space-between" pd="50px 5vw 0">
                     <Article pd="0" wd="45%">
-                        <p>모달 기능</p>
-                        <div>프로젝트 1 영역을 클릭하면 모달을 통해 프로젝트의 상세 내용을 확인할 수 있도록 구성했습니다. 이를 통해 사용자는 현재 페이지를 벗어나지 않고도 직관적으로 정보를 탐색할 수 있습니다.<br/><br/>
-                            또한, URL 구조는 /project/프로젝트명 형식으로 설정되어 있으며, 새로고침 시에는 팝업이 아닌 전체 페이지로 해당 프로젝트가 표시되도록 구현했습니다. <br/>
+                        <div>프로젝트 링크를 클릭하면 모달을 활성화하고 해당 프로젝트 내용을 표시합니다. 반대로, 일반적인 라우팅에서는 모달을 닫고 개별적인 페이지로 이동합니다.<br/>
+                            전역 상태를 통해 모달이 열려 있는지(프로젝트를 보고있는지) 체크하여 프로젝트를 모달로 띄울지, 일반 페이지로 이동할지 결정하였습니다. <br/>
                             이를 통해 모달 내에서 직접 접근한 경우와 URL을 통해 접근한 경우의 동작을 일관성 있게 유지하면서도, 사용자가 원하는 방식으로 정보를 확인할 수 있도록 했습니다.</div>
                     </Article>
-                </ImgFlexWrap>
+                    <div style={{width: width >= tabWidth ? "40%" : "100%"}}>
+                        <ImgWd mg="0 0 4% 0" src="/asset/project/pj1/pj1-6.png"/>
+                        <ImgWd src="/asset/project/pj1/pj1-7.png"/>
+                    </div>
+                </Reverse>
                 <div>
                     <ImgFlexWrap pd="100px 5vw 0"><ImgWd src="/asset/project/pj1/pj1-8.png"/></ImgFlexWrap>
                     <Article pd="40px 5vw 0">
