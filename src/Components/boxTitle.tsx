@@ -3,6 +3,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "../atom";
 import { CURSOR, DARKTHEME, LIGHTTHEME, LINKICON } from "./svg";
 import { breakpoints, darkTheme, lightTheme } from "../theme";
+import { Link } from "react-router-dom";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
@@ -22,7 +23,7 @@ const Cursor = styled.div`
         margin: -8px 0 0 15px; font-weight: 500;
     }
 `
-const Coffee = styled.div`color: ${(props)=>props.theme.gray4}; line-height: 1.5; margin: 30px 0 25px;`
+const Goto = styled.div`color: ${(props)=>props.theme.gray4}; line-height: 1.5; margin: 30px 0 25px;`
 const Mode = styled.div`cursor:pointer; display:inline-block; width: fit-content;`
 
 function BoxTitle() {
@@ -43,7 +44,12 @@ function BoxTitle() {
                             <Cursor><CURSOR/><p>Kwons0</p></Cursor>
                         </Create>
                     </div>
-                    <Coffee>재밌게 보셨나요?<br/>저에게 흥미가 있으시다면 <a href="tel:+821044300820">커피챗 해요!&nbsp;&nbsp;<LINKICON color={isDark? darkTheme.gray4 : lightTheme.gray4}/></a></Coffee>
+                    <Goto>저에게 흥미가 있으시다면<br/>
+                        <Link to="https://www.notion.so/4b845658b5d5423e9e6f08758bc900b7" target="_black">
+                            노션에서 더 많은 이야기를 만나보세요! &nbsp;&nbsp;
+                            <LINKICON color={isDark? darkTheme.gray4 : lightTheme.gray4}/>
+                        </Link>
+                    </Goto>
                     <Mode onClick={toggleAtom}>{ isDark ? <DARKTHEME/> : <LIGHTTHEME/> }</Mode>
                 </TitleBox>
 
