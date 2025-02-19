@@ -58,7 +58,6 @@ function Page(){
         }
     }
 
-
     return(
         <AnimatePresence>
             <ModalWrap>
@@ -82,7 +81,9 @@ function Page(){
                         <CloseBtn onClick={onOverlayClick}><CLOSE color={theme.textColor}/></CloseBtn>
                     </>
                 ) : (
-                    <div>{renderProject()}</div>
+                    <>
+                        <div>{renderProject()}</div>
+                    </>
                 )
             }
             </ModalWrap>

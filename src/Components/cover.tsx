@@ -1,9 +1,9 @@
 import { useRecoilValue } from "recoil";
-import { GITHUB, LINKICON, NEXTJS, NOTION } from "./svg";
-import styled from "styled-components";
-import { isDarkAtom } from "../atom";
+import { ARROW, GITHUB, LINKICON, NOTION } from "./svg";
+import styled, { useTheme } from "styled-components";
+import { isDarkAtom, isModalOpen } from "../atom";
 import { breakpoints } from "../theme";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
@@ -80,14 +80,26 @@ interface ICover {
 }
 
 
+const Nav = styled.span`
+    position: fixed; bottom: 5%; right: 10%; z-index: 10000;
+    svg{ transform: rotate(180deg) translateY(-1px); width: 20px; height: 15px;}
+`
+
+
 function Cover(
     {bgimg, favicon, title, siteLink, githubLink, notionLink, desc, contents, date, rate, skills, icons }: ICover
 ){
 
     const isDark = useRecoilValue(isDarkAtom);
+    const isModal = useRecoilValue(isModalOpen);
+    const theme = useTheme();
 
     return(
-        <div>
+    <div>
+        {
+            !isModal ? <Nav><Link to="/"><ARROW color={isDark? "#E6E6E6" : theme.gray1}/> Back to Home</Link></Nav> : null
+            
+        }
         <CoverBox>
             <CoverBg isDark={isDark}><img src={bgimg}/><p></p></CoverBg>
             <Title isDark={isDark}>
