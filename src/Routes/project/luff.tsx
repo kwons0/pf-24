@@ -29,6 +29,8 @@ const ImgWd = styled.img<{wd?: string, max?:string, mg?: string}>`
     width: ${(props)=>props.wd}; max-width: ${(props)=>props.max}; margin:${(props)=>props.mg} ;
     border: 1px solid ${(props)=>props.theme.gray1};
 `
+const VideoWd = styled.video`width: 100%;`
+
 const ImgFlexWrap = styled(Flex)<{pd?: string,mg?: string, wd?: string}>` position: relative;
     padding: ${(props) => props.pd}; margin: ${(props) => props.mg}; width: ${(props)=>props.wd};
     ${mediaTablet}{ width: 100%; }
@@ -229,7 +231,10 @@ function Luff(){
                         </div>
                     </Article>
                 </ImgFlexWrap>
-                <Annotation mg="40px auto 0" wd={width >= tabWidth ? "50%": "100%"}><ImgWd src="/asset/project/pj3/pj3-10-3.png"/><p>상품 분류 페이지 스크롤 시</p></Annotation>
+                <Annotation mg="40px auto 0" wd={width >= tabWidth ? "50%": "100%"}>
+                    <VideoWd src="/asset/project/pj3/pj3-video.mov" controls autoPlay muted loop/>
+                    <p>상품 분류 페이지 스크롤 시</p>
+                </Annotation>
             </Contents>
 
             <div>

@@ -24,6 +24,7 @@ const Flex = styled.div<{space?:string}>`
 const ImgWd = styled.img<{wd?: string, max?:string}>`
     width: ${(props)=>props.wd}; max-width: ${(props)=>props.max};
 `
+const VideoWd = styled.video`width: 100%;`
 const ImgFlexWrap = styled(Flex)<{pd?: string,mg?: string, wd?: string}>` position: relative;
     padding: ${(props) => props.pd}; margin: ${(props) => props.mg}; width: ${(props)=>props.wd};
     @media (max-width: ${breakpoints.tablet}) { width: 100%; }
@@ -84,7 +85,7 @@ function Netflix(){
                 </Article>
             </ImgFlexWrap>
             <ImgFlexWrap pd="30px 5vw" space="space-between">
-                <ImgFlexWrap wd="40%" pd="0 0 35px"><ImgWd src="/asset/project/pj4/pj4-6.png"/></ImgFlexWrap>
+                <ImgFlexWrap wd="40%" pd="0 0 35px"><VideoWd src="/asset/project/pj4/pj4-video.mov" controls autoPlay muted loop/></ImgFlexWrap>
                 <Article pd="0 0 100px 0" wd="55%">
                     <div>헤더의 네비게이션 바와 검색창에 부드럽고 자연스러운 애니메이션 효과를 추가했습니다.<br/>
                     스크롤 위치에 따라 헤더의 배경색이 동적으로 변경되게 하였으며, 검색창 열기/닫기 시 표시 여부와 이동 효과를 부드럽게 처리했습니다. 또, 현재 활성화된 페이지를 동적으로 감지하고, 해당 메뉴 아래에 빨간색 원형 강조 효과(Circle)를 자연스럽게 렌더링했습니다.
