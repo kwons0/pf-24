@@ -7,7 +7,6 @@ import { isDarkAtom, isModalOpen } from "../atom";
 import { useEffect } from "react";
 import { ARROW, GITHUB, MAIL, NOTION, PHONE } from "./svg";
 import { breakpoints } from "../theme";
-import BoxTitle from "./boxTitle";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -173,7 +172,6 @@ function Box(){
 
     return(
         <div>
-            <BoxTitle/>
             <ContainerWrap>
                 <Container1 isDark={isDark}>
                     <h3>Hello,</h3>
