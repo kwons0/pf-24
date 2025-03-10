@@ -1,95 +1,81 @@
-
-type ListArr = {
-    "title": string;
-    "img": string;  
-}
-
-type ItemArr = {
-    "category": string;
-    "list": ListArr[];
-}
-
 type DataItem = {
-    "name": string;
-    "item": ItemArr[];
+    title: string;
+    img: string;
+    color: string;
+}
+
+type CategoryItem = {
+    title: string;
+    skills: string[];
 }
 
 
 type PjArr = {
-    "title": string;
-    "img": string;
-    "href": string;
+    title: string;
+    img: string;
+    href: string;
 }
 
 type PjItem = {
-    "name": string;
-    "item": PjArr[];
+    name: string;
+    item: PjArr[];
 }
 
 export const dataItems: DataItem[] = [
-    {
-        "name": "skill",
-        "item": [
-            {
-                "category": "Language",
-                "list": [
-                    { "title": "HTML5", "img": "html5"},
-                    { "title": "CSS3", "img": "css3"},
-                    { "title": "JavaScript", "img": "javascript"},
-                    { "title": "TypeScript", "img": "typescript"},
-                    { "title": "JSON", "img": "json"},
-                ]
-            },
-            {
-                "category": "FrontEnd",
-                "list": [
-                    { "title": "React.js", "img": "reactjs"},
-                    { "title": "Next.js", "img": "nextjs"},
-                    { "title": "jQuery", "img": "jquery"},
-                    { "title": "Sass", "img": "sass"},
-                    { "title": "tailwindcss", "img": "tailwind"},
-                    { "title": "styled-components", "img": "styled-components"},
-                    { "title": "Framer-motion", "img": "framer-motion"},
-                ]
-            },
-            {
-                "category": "Build Tools",
-                "list": [
-                    { "title": "webpack", "img": "webpack"},
-                    { "title": "npm", "img": "npm"},
-                ]
-            },            
-            {
-                "category": "Version Control",
-                "list": [
-                    { "title": "Git", "img": "git"},
-                    { "title": "GitHub", "img": "github"},
-                    { "title": "Bitbucket", "img": "bitbucket"},
-                ]
-            },
-            {
-                "category": "Design & Editing",
-                "list": [
-                    { "title": "Figma", "img": "figma"},
-                    { "title": "Adobe Photoshop", "img": "photoshop"},
-                    { "title": "Adobe Illustrator", "img": "illustrator"},
-                    { "title": "Adobe Premiere Pro", "img": "premiere"}
-                ]
-            },
-        ]
-    },
+    { title: "HTML5", img: "html5", color: "#f18a29"},
+    { title: "CSS3", img: "css3", color: "#264DE4"},
+    { title: "JavaScript", img: "javascript", color: "#F7DF1E"},
+    { title: "TypeScript", img: "typescript", color: "#3376c2"},
+    { title: "JSON", img: "json", color: "#a9a9a9"},
+    { title: "React.js", img: "reactjs", color: "#7ed8eb"},
+    { title: "Next.js", img: "nextjs", color: "#dddddd"},
+    { title: "jQuery", img: "jquery", color: "#0f69aa"},
+    { title: "Sass", img: "sass", color: "#CD6799"},
+    { title: "tailwindcss", img: "tailwind", color: "#06B6D4"},
+    { title: "styled-components", img: "styled-components", color: "#ed92ca"},
+    { title: "Framer-motion", img: "framer-motion", color: "#BB4B96"},
+    { title: "webpack", img: "webpack", color: "#6b0bf5"},
+    { title: "npm", img: "npm", color: "#CC0000"},
+    { title: "Git", img: "git", color: "#DE4C36"},
+    { title: "GitHub", img: "github", color: "#5968ba"},
+    { title: "Bitbucket", img: "bitbucket", color: "#2684FF"},
+    { title: "Figma", img: "figma", color: "#1ABCFE"},
+    { title: "Adobe Photoshop", img: "photoshop", color: "#31A8FF"},
+    { title: "Adobe Illustrator", img: "illustrator", color: "#FF9A00"},
+    { title: "Adobe Premiere Pro", img: "premiere", color: "#9999FF"}
 ]
+
+export const categories: CategoryItem[] = [
+    {
+        title: "프론트 실무에 사용했습니다.",
+        skills: ["Bitbucket", "CSS3", "Figma", "Git", "HTML5", "JSON", "JavaScript", "jQuery"]
+    },
+    {
+        title: "개인 프로젝트에 사용했습니다.",
+        skills: ["CSS3", "Figma", "Framer-motion", "Git", "GitHub", "HTML5", "JSON", "JavaScript", "Next.js", "React.js", "Sass", "TypeScript"]
+    },
+    {
+        title: "계속 공부 중입니다.",
+        skills: ["React.js","TypeScript", "Next.js"]
+    },
+    {
+        title: "디자인 실무에 사용했습니다.",
+        skills: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Adobe Premeiere"]
+    },
+];
+
+
 
 
 export const pjItems: PjItem[] = [
     {
         "name": "project1",
         "item": [
-            { "title": "Lufff 자사몰 리뉴얼", "img": "project1-3", "href": "luff" },
-            { "title": "거래해요! 동물의 숲", "img": "project1-2", "href": "animal" },
-            { "title": "2025.PF", "img": "project1-1", "href": "pf" },
-            { "title": "넷플릭스 Clone", "img": "project1-4", "href": "netflix" },
-            { "title": "Best Seller", "img": "project1-5", "href": "bestseller" },
+            { title: "Lufff 자사몰 리뉴얼", img: "project1-3", href: "luff" },
+            { title: "거래해요! 동물의 숲", img: "project1-2", href: "animal" },
+            { title: "2025.PF", img: "project1-1", href: "pf" },
+            { title: "넷플릭스 Clone", img: "project1-4", href: "netflix" },
+            { title: "Best Seller", img: "project1-5", href: "bestseller" },
         ]
     }
 ]

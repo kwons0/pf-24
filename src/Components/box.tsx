@@ -1,29 +1,31 @@
 import styled, { useTheme } from "styled-components";
-import { dataItems, pjItems } from "../data";
+import { dataItems, pjItems, categories } from "../data";
 import { Link, useNavigate, } from "react-router-dom";
 import Page from "./page";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isDarkAtom, isModalOpen } from "../atom";
 import { useEffect } from "react";
-import { ARROW, GITHUB, MAIL, NOTION, PHONE } from "./svg";
 import { breakpoints } from "../theme";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
 const ContainerWrap = styled.div`
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-    height: 1900px; flex-wrap: wrap; padding: 0 3vw; margin: 0;
-    ${mediaTablet}{ display:block; height: fit-content; padding: 0 5vw; }
-
-    > ul{width: 48%;}
+    display: flex; justify-content: space-between; padding: 0 3vw; margin: 0;
+    ${mediaTablet}{ display:block; height: fit-content; padding: 0 5%; }
+`
+const FlexCol = styled.ul`
+    display: flex; flex-direction: column; width: 48%;
+    ${mediaTablet}{ width: 100%;}
 `
 const Container = styled.li<{isDark: boolean}>`
     background: ${({isDark})=> isDark ? "#292929" : "#FFFFFF"}; 
-    padding: 5%; margin: 0 0 5% 0; border-radius: 3vw; width: 46%;
+    padding: 10%; margin: 0 0 9% 0; border-radius: 2.5vw;
     position: relative; height: fit-content;
+    &:nth-child(even){ margin-right: 0;}
+    > *:nth-child(2){margin-top: 30px;}
     ${mediaTablet}{ 
-        width: 100%; margin: 5% auto; padding: 6vw 7vw; font-size: 15px;
+        width: 100%; margin: 0 0 9% 0; padding: 6vw 7vw; font-size: 15px;
         &:first-child{ margin-top:0;}
     }
     
@@ -31,114 +33,51 @@ const Container = styled.li<{isDark: boolean}>`
         font-size: 50px; color: ${(props)=> props.theme.textColor+"44"};  font-weight: 700;
         position: sticky; top: 20px; z-index: 10;
     }
-    > p{ color: ${({theme, isDark})=> isDark ? theme.gray5 : theme.gray3};
-        padding: 20px 0 45px;}
+    > p{ color: ${({theme, isDark})=> isDark ? theme.gray5 : theme.gray3};}
     > div{ line-height: 1.5;}
 `
-const Container1 = styled(Container)`order: 4; height: fit-content;
-    > p{ padding: 20px 0;}
-    ${mediaTablet}{ order: 1; }
-`;
-const Container2 = styled(Container)`order: 1; 
-margin-top: 200px;
-    padding-bottom: 30px;
-    ${mediaTablet}{ order: 3; margin-top: 0;}
-`;
-const Container3 = styled(Container)`order: 6;
-    ${mediaTablet}{ order: 4; }
-`;
-const Container4 = styled(Container)`order: 2;
-    ${mediaTablet}{ order: 5; }
-`;
-const Container5 = styled(Container)`order: 7;
-    ${mediaTablet}{ order: 6; }
-`;
-const EmptyContainer = styled.div`
-    height:40px; order: 3;
-    ${mediaTablet}{ display:none;}
-`
-const CBox = styled(Container)`
-    background: ${({isDark}) => isDark ? "#bddfff2b" : "#BDDFFF"}; order: 5;
-    ${mediaTablet}{ order: 2; }
-    ul{ 
-        li{ display: flex; align-items: center; margin: 0 0 5% 0; line-height: 1;
-            &:last-child{ margin-bottom: 0; justify-content: space-between;}
-            a{ display: flex; align-items: center;}
+const SkillBox = styled(Container)`padding-bottom: 30px;`;
+
+const LinkBox = styled(Container)`
+    padding-bottom: 5%;
+    ul{ display: flex; flex-wrap: wrap;
+        li{ display: flex; align-items: center; margin: 0 0 5% 0; line-height: 1; width: 50%;
+            a{ display: flex; align-items: center; text-decoration: underline;}
             svg{ width: 18px; height: 18px; ${mediaTablet}{ width: 16px; height: 16px;}}
             span{ padding-left: 15px; ${mediaTablet}{ padding-left: 10px;}}
             p{ width: 50%;}
         }
     }
 `
-const PBox = styled.ul`
-    display: flex; align-items: center; justify-content: space-between; margin: 0 0 7%;
-    li{display: flex; align-items: center; margin-right: 1%; }
-`
-const FaviWrap = styled.li` width: 75%;
-    @media screen and (max-width: 1024px ) and (min-width: ${breakpoints.tablet}) { width: 65%; }
-    img{margin-right: 4%; width: 25%; }
-`
-const More = styled.li`justify-content: flex-end; width: 20%;
-    @media screen and (max-width: 1024px )and (min-width: ${breakpoints.tablet}) { width: 25%; }
-    svg{ width: 2rem;}
-`
-const DotWrap = styled.div`
-    display: flex; align-items: baseline; margin-right: 10%;
-`
-const Dot = styled.span<{isDark: boolean}>`
-    display: inline-block; width: 0.5rem; height: 0.5rem; background: ${({theme, isDark}) => isDark ? theme.gray5 : theme.gray1};
-    border-radius: 50%; margin: 2rem 0.2rem 0;
-`
-const ItemBox = styled.ul`
-    padding: 0 3%; display: flex; flex-wrap: wrap;
-`
-const Item = styled.li`
-    text-align: center; display: flex; flex-direction: column; align-items: center;
-    p{line-height:1.5;}
-`
-const Skills = styled(Item)`
-    display: inline-flex; width: 100%;
-    &:first-child{ > div {margin-top: 30px;}}
-    &:nth-child(3){ width: 37%; 
-        > ul > li{ width: 30%; margin: 0 30% 30% 0;
-            &:last-child{ margin-right:0;}
-        }
-    }
-    &:nth-child(4){ width: 58%; margin-left: 5%;
-        > ul > li{ 
-            width: 20%; margin: 0 20% 20% 0;
-            &:last-child{ margin-right:0;}
-        }
-    }
 
-    > div{ 
-        text-align: left; width: 100%; color: ${(props)=>props.theme.textColor+"29"}; 
-        margin: 0 0 20px; font-size:18px; font-weight:600;
+const CBox = styled(LinkBox)`
+    ul{ display: block;
+        li{ width: 100%;
+            a{ text-decoration: unset;} 
+        }
     }
-    > ul{ width: 100%; }
-    
 `
-const SkillItem = styled.li`
-    width: 12%; margin: 0 10% 10% 0; display: flex; flex-direction: column; align-items: center;
-    &:nth-child(5n){ margin-right:0;}
-    p{ font-size: 12px; padding: 15px 0 0; line-height: 1.2;  text-align: center;}
+
+
+const Skills = styled.div`
+    &:first-child{ div{ padding-top: 0;} }
+    div{ color: ${(props)=>props.theme.gray3}; padding: 20px 0 13px; font-size: 14px; font-weight: 400;}
+    ul{ display: flex; flex-wrap: wrap;}
+
 `
+const SkillItem = styled.li<{bgColor: string}>`
+    background: ${(props)=> props.bgColor}; padding: 5px 10px; line-height: 1; margin: 0 5px 5px 0; border-radius: 30px; font-size: 12px;
+`
+
+
 const Project1 = styled.div<IProjectPops>`
+    display:none;
     width: 22%; margin: 3% 17% 10% 0; cursor: pointer; text-align: center;
     &:nth-child(3n){ margin-right:0;}
     &:nth-child(5n){margin-right: 17%;}
     p{ font-size: 16px;  padding: 18px 0 0;}
     img{border-radius: 13px;}
 `
-
-const Line = styled.div<{isDark: boolean}>`
-    position: absolute; width: 25%; height: 1px; 
-    border: 3px dashed ${({isDark})=> isDark ? "#292929" : "#FFFFFF"}; outline-offset: 5px;
-    ${mediaTablet}{ display: none;}
-`
-const Line1 = styled(Line)`left: -15%; bottom: 10%; transform: rotate(-45deg);`
-const Line2 = styled(Line)`right: -15%; bottom: 0; transform: rotate(45deg);`
-
 
 interface IProjectPops {
     layoutId: string
@@ -147,8 +86,6 @@ interface IProjectPops {
 
 
 function Box(){
-
-    const skillData = dataItems.find(item => item.name === "skill")?.item || [];
 
     const projectItems = pjItems
     .filter(data => data.name === "project1")
@@ -173,56 +110,59 @@ function Box(){
     return(
         <div>
             <ContainerWrap>
-                <Container1 isDark={isDark}>
-                    <h3>Hello,</h3>
-                    <p></p>
-                    <div>
-                        반갑습니다! 저는 프론트엔드 개발자 권서영입니다.<br/><br/>
-                        UX 설계부터 디자인, 개발까지 다양한 단계를 직접 경험하며 각 분야를 깊이 이해할 수 있었고, 이를 통해 프로젝트의 흐름을 파악하고 원활히 진행되도록 이끌어갈 수 있는 역량을 갖추게 되었습니다.<br/><br/>
-                        좋은 디자인을 구별할 수 있을 뿐만 아니라 그것을 구현할 수 있는 개발자는 무한한 가능성을 가지고 있다고 믿습니다.<br/><br/>
-                        저에게 관심이 있으시다면 언제든지 연락 주세요. 기대하고 있겠습니다! 💥
-                    </div>
-                </Container1>
-                <CBox isDark={isDark}>
-                    <ul>
-                        <li><a href="mailto:kwons0128@gmail.com"><MAIL color={isDark ? "#E6E6E6" : theme.gray3}/><span>kwons0128@gmail.com</span></a></li>
-                        <li><a href="tel:+821044300820"><PHONE color={isDark ? "#E6E6E6" : theme.gray3}/><span>+82 10.4430.0820</span></a></li>
-                        <li>
-                            <p><Link to="https://github.com/kwons0" target="_black">
-                                <GITHUB color={isDark ? "#E6E6E6" : theme.gray3}/><span>github.com</span>
-                            </Link></p>
-                            <p><Link to="https://www.notion.so/Kwons0-dc7721815f594e4a8c26489e01acbc5e" target="_black">
-                                <NOTION color={isDark ? "#E6E6E6" : theme.gray3}/><span>notion.so</span>
-                            </Link></p>
-                        </li>
-                    </ul>
-                </CBox>
-                <Container2 isDark={isDark}>
-                    <h3>Skills</h3>
-                    <ul>
-                        {skillData.map((categoryData, idx) => (
-                            <Skills key={idx}>
-                                <div>{categoryData.category}</div>
-                                <ItemBox>
-                                    {categoryData.list.map((skill, skillIdx) => (
-                                        <SkillItem key={skillIdx}>
-                                            {skill.img && (
-                                                <>
-                                                    <img src={`/asset/svg/${skill.img}.svg`} alt={skill.img} />
-                                                    <p>{skill.title}</p>
-                                                </>
-                                            )}
-                                        </SkillItem>
-                                    ))}
-                                </ItemBox>
-                            </Skills>
-                        ))}
-                    </ul>
+                <FlexCol>
+                    <Container isDark={isDark}>
+                        <h3>Hello,</h3>
+                        <p></p>
+                        <div>
+                            안녕하세요! 저는 디자인을 넘어, 문제를 해결하는 프론트엔드 개발자 권서영입니다.<br/><br/>
+                            UX 설계부터 디자인, 개발까지 다양한 단계를 직접 경험하며 각 분야를 깊이 이해할 수 있었고, 이를 통해 프로젝트의 흐름을 파악하고 원활히 진행되도록 이끌어갈 수 있는 역량을 갖추게 되었습니다.<br/><br/>
+                            좋은 디자인을 구별할 수 있을 뿐만 아니라 그것을 구현할 수 있는 개발자는 무한한 가능성을 가지고 있다고 믿습니다.<br/><br/>
+                            저에게 관심이 있으시다면 언제든지 연락 부탁드립니다!
+                        </div>
+                    </Container>
+                    <LinkBox isDark={isDark}>
+                        <h3>Career<br/>& Projects</h3>
+                        <ul>
+                            <li><Link to="https://drive.google.com/file/d/1RXCD0PLDOi6fDHjI9lTOFzaNUQHcGDzV/view?usp=sharing" target="_black">이력서, 경력기술서</Link></li>
+                            <li><Link to="https://drive.google.com/file/d/1r3tBoCZFSAsZJd7lGuuWB7E1nlNAzfwN/view?usp=sharing" target="_black">포트폴리오 PDF 파일</Link></li>
+                            <li><Link to="https://www.notion.so/Kwons0-dc7721815f594e4a8c26489e01acbc5e" target="_black">notion.so</Link></li>
+                            <li><Link to="https://github.com/kwons0" target="_black">github.com</Link></li>
+                        </ul>
+                    </LinkBox>
+                </FlexCol>
 
+                <FlexCol>
+                    <CBox isDark={isDark}>
+                        <h3>Contact</h3>
+                        <p></p>
+                        <ul>
+                            <li><a href="mailto:kwons0128@gmail.com">📧&nbsp;&nbsp;kwons0128@gmail.com</a></li>
+                            <li><a href="tel:+821044300820">📞 +82 10.4430.0820</a></li>
+                        </ul>
+                    </CBox>
+                    <SkillBox isDark={isDark}>
+                        <h3>Skills</h3>
+                        <ul>
+                            {categories.map((category) => (
+                                <Skills key={category.title}>
+                                    <div>{category.title}</div>
+                                    <ul>
+                                        { category.skills.map((data) => {
+                                            let skill = dataItems.find((v)=>v.title === data)
+                                            return skill ? (            
+                                                <SkillItem key={skill.title} bgColor={skill.color + "3d"}>{skill.title}</SkillItem>
+                                            ) : null
+                                        }) }
+                                    </ul>
+                                </Skills>
+                            ))}
+                        </ul>
+                    </SkillBox>
 
-                </Container2>
+                </FlexCol>
 
-                <Container3 isDark={isDark}>
+                {/* <Container3 isDark={isDark}>
                     <h3>Project(1)</h3>
                     <p>2024 ~ 2025 기여도 100% 개인 프로젝트</p>
                     <ItemBox>
@@ -238,49 +178,8 @@ function Box(){
                             ))
                         }
                     </ItemBox>
-                    <Line1 isDark={isDark}></Line1>
-                </Container3>
+                </Container3> */}
 
-                <Container4 isDark={isDark}>
-                    <h3>Project(2)</h3>
-                    <p>2021.11 ~ 2024.08 실무 협업</p>
-                    <Link to="https://www.notion.so/875cae638a154088b3f5ab859292c4d4" target="_blank">
-                        <PBox>
-                            <FaviWrap>
-                                <img src="/asset/svg/project2-1.svg" alt="brand-l"/>
-                                <img src="/asset/svg/project2-2.svg" alt="brand-g"/>
-                                <img src="/asset/svg/project2-3.svg" alt="brand-w"/>
-                                <img src="/asset/svg/project2-4.svg" alt="brand-s"/>
-                            </FaviWrap>
-                            <More>
-                                <DotWrap><Dot isDark={isDark}/><Dot isDark={isDark}/><Dot isDark={isDark}/></DotWrap>
-                                <ARROW color={isDark? "#E6E6E6" : theme.gray1}/>
-                            </More>
-                        </PBox>
-                    </Link>
-                    <div>속옷 브랜드, 반려동물 브랜드, 헤어케어 브랜드 등<br/>1n개 브랜드 이야기</div>
-                    <Line2 isDark={isDark}></Line2>
-                </Container4>
-
-                <Container5 isDark={isDark}>
-                    <h3>Project(3)</h3>
-                    <p>2021.04 ~ 2021.11 개인 프로젝트</p>
-                    <Link to="https://www.notion.so/8403d8aaadd54eb8bec98af711d242a0" target="_blank">
-                        <PBox>
-                            <FaviWrap>
-                                <img src="/asset/svg/project3-1.svg" alt="21-pf"/>
-                                <img src="/asset/svg/project3-2.svg" alt="pixar"/>
-                                <img src="/asset/svg/project3-3.svg" alt="pizzahut"/>
-                                <img src="/asset/svg/project3-4.svg" alt="market"/>
-                            </FaviWrap>
-                            <More>
-                                <DotWrap><Dot isDark={isDark}/><Dot isDark={isDark}/><Dot isDark={isDark}/></DotWrap>
-                                <ARROW color={isDark? "#E6E6E6" : theme.gray1}/>
-                            </More>
-                        </PBox>
-                    </Link>
-                </Container5>
-            <EmptyContainer/>
             </ContainerWrap>
             { modalOpen && <Page/> }
         </div>
