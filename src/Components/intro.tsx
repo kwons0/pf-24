@@ -1,9 +1,9 @@
 import styled, { useTheme } from "styled-components";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "../atom";
-import { breakpoints, darkTheme, lightTheme } from "../theme";
+import { breakpoints } from "../theme";
 import { Link } from "react-router-dom";
-import { MAINIMG, CURSOR, DARKTHEME, LIGHTTHEME, LINKICON } from "./svg";
+import { MAINIMG, DARKTHEME, LIGHTTHEME } from "./svg";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -31,7 +31,7 @@ const Title = styled.div<{isDark:boolean}>`
 const Underline = styled.img`position: absolute; left:0; bottom: -12%;`
 
 const Mode = styled.div`
-    position: fixed; right: 6vw; bottom: 3vh; z-index: 999;
+    position: fixed; right: 6vw; bottom: 3vh; z-index: 99;
     cursor:pointer; display:inline-block; width: 40px; height: 40px;
     display:flex; align-items: center; justify-content: center;
     

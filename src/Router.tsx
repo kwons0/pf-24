@@ -1,13 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { isModalOpen } from './atom';
+import { useRecoilValue } from 'recoil';
 import Home from './Routes/Home';
 import Page from './Components/page';
-import { isModalOpen } from './atom';
-import Pf from './Routes/project/pf';
 import Animal from './Routes/project/animal';
-import Netflix from './Routes/project/netflix';
-import Bestseller from './Routes/project/bestseller';
-import { useRecoilValue } from 'recoil';
 import Luff from './Routes/project/luff';
+import Sbrand from './Routes/project/sbrand';
 
 function Router(){
     const modalState = useRecoilValue(isModalOpen);
@@ -25,9 +23,7 @@ function Router(){
                             <Route path="/" element={<Home/>}/>
                             <Route path="/project/luff" element={<Luff/>}/>
                             <Route path="/project/animal" element={<Animal/>}/>
-                            <Route path="/project/pf" element={<Pf/>}/>
-                            <Route path="/project/netflix" element={<Netflix/>}/>
-                            <Route path="/project/bestseller" element={<Bestseller/>}/>
+                            <Route path="/project/sbrand" element={<Sbrand/>}/>
                         </>
                     )
                 }

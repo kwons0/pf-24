@@ -69,13 +69,11 @@ export const categories: CategoryItem[] = [
 
 export const pjItems: PjItem[] = [
     {
-        "name": "project1",
+        "name": "project",
         "item": [
-            { title: "Lufff 자사몰 리뉴얼", img: "project1-3", href: "luff" },
-            { title: "거래해요! 동물의 숲", img: "project1-2", href: "animal" },
-            { title: "2025.PF", img: "project1-1", href: "pf" },
-            { title: "넷플릭스 Clone", img: "project1-4", href: "netflix" },
-            { title: "Best Seller", img: "project1-5", href: "bestseller" },
+            { title: "거래해요! 동물의 숲", img: "list_animal", href: "animal" },
+            { title: "S사 자사몰 구축", img: "list_sbrand", href: "sbrand" },
+            { title: "Luff 자사몰 리뉴얼", img: "list_luff", href: "luff" },
         ]
     }
 ]

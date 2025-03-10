@@ -1,8 +1,5 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Pf from '../Routes/project/pf';
-import Netflix from '../Routes/project/netflix';
 import Animal from '../Routes/project/animal';
-import Bestseller from '../Routes/project/bestseller';
 import styled, { useTheme } from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
@@ -10,6 +7,7 @@ import { isDarkAtom } from "../atom";
 import { CLOSE } from "./svg";
 import { breakpoints } from "../theme";
 import Luff from "../Routes/project/luff";
+import Sbrand from "../Routes/project/sbrand";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -49,11 +47,9 @@ function Page(){
 
     const renderProject = () => {
         switch ( projectId ) {
-            case "pf": return <Pf/>;
             case "animal": return <Animal/>;
+            case "sbrand": return <Sbrand/>;
             case "luff": return <Luff/>;
-            case "netflix": return <Netflix/>;
-            case "bestseller": return <Bestseller/>;
             default: return null;
         }
     }
