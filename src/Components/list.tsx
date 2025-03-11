@@ -1,13 +1,13 @@
 
-import styled, { useTheme } from "styled-components";
-import { dataItems, pjItems, categories } from "../lib/data";
-import { Link, useNavigate, } from "react-router-dom";
+import styled from "styled-components";
+import { pjItems } from "../lib/data";
+import { useNavigate, } from "react-router-dom";
 import Page from "./page";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isDarkAtom, isModalOpen } from "../atom";
 import { useEffect } from "react";
 import { breakpoints } from "../lib/constants";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
@@ -15,27 +15,48 @@ const ListBox = styled.div`margin: 10% 0;`
 const ProjectWrap = styled.div<IProjectPops>`
     width: 100%; padding: 5%;
     display: flex; align-items: center; justify-content: space-between;
-    li{ position: relative;}
+    ${mediaTablet}{ flex-direction: column-reverse; margin-bottom: 40px;}
+
     &:nth-child(even){
-        ul{ order: 2; padding-left: 5%;}
-        img{ order: 1;}
+        flex-direction: row-reverse;
+        ${mediaTablet}{ flex-direction: column-reverse;}
+        ul{ padding-left: 5%; }
+    }
+
+    ul{
+        ${mediaTablet}{ padding: 2%; padding-left: 2% !important; width: 100%;}
+        li{ position: relative;}
     }
 `
 
 const PjImg = styled(motion.img)`
     width: 50%; cursor: pointer;
+    ${mediaTablet}{ width: 100%;}
 `
 const PjTitle = styled.li<{isDark: boolean}>`
-    p{ color: ${(props)=> props.theme.gray3 }; padding-bottom: 15px;}
-    div{ font-size: 25px; font-weight: 600;}
+    ${mediaTablet}{ margin-top: 30px;}
+
+    p{ 
+        color: ${(props)=> props.theme.gray3 }; padding-bottom: 15px;
+        ${mediaTablet}{font-size: 14px; padding-bottom: 8px;}
+    }
+    div{ 
+        font-size: 25px; font-weight: 600;
+        ${mediaTablet}{font-size: 20px;}
+    }
 `
-const PjDesc = styled.li`margin: 30px 0 50px; width: 70%; line-height: 1.5; font-size:18px;`
+const PjDesc = styled.li`
+    margin: 30px 0 50px; width: 70%; line-height: 1.5; font-size:18px;
+    ${mediaTablet}{ font-size: 15px; width: 100%; margin: 20px 0;}
+`
 const PjBtn = styled(motion.span)<{isDark: boolean}>`
     display: inline-block; padding: 10px 20px; line-height: 1; cursor: pointer; border-radius: 50px;
     background: ${({theme,isDark})=> isDark ? theme.gray2 : "#E5E5E5"};
+    ${mediaTablet}{ font-size: 13px;}
 `
 const Deco = styled.img`
     position: absolute; left: 22%; bottom: -78%; width: 26% !important;
+    ${mediaTablet}{left: 32%; bottom: -50%;}
 `
 
 interface IProjectPops {
@@ -90,7 +111,7 @@ function List(){
                                         variants={ {hover : { background: "#1A73E8", color: "#fff" }}} 
                                         whileHover='hover'
                                     >view detail</PjBtn>
-                                    { k == 0 ? <Deco src="asset/svg/deco_arrow1.svg" alt="deco"/> : null }
+                                    { k == 0 ? <Deco src="asset/svg/deco1.svg" alt="deco"/> : null }
                                 </li>
                             </ul>
                             <PjImg 
