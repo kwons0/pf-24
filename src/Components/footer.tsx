@@ -15,6 +15,9 @@ const Right = styled.div`
     h4{ font-size: 18px;
         span{ font-size: 14px; color: ${(props) => props.theme.gray3}; padding-left: 5px;}
     }
+    ul{
+        font-size: 14px; line-height: 1.7; color: ${(props) => props.theme.gray4}; margin-top: 10px;
+    }
 `
 
 function Footer(){
