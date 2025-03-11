@@ -10,10 +10,11 @@ import { breakpoints } from "../lib/constants";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
-const ListBox = styled.div`margin: 20% 0 10%;`
+const ListBox = styled.div`margin: 10% 0;`
 const ProjectWrap = styled.div<IProjectPops>`
     width: 100%; padding: 5%;
     display: flex; align-items: center; justify-content: space-between;
+    li{ position: relative;}
     &:nth-child(even){
         ul{ order: 2; padding-left: 5%;}
         img{ order: 1;}
@@ -29,6 +30,9 @@ const PjDesc = styled.li`margin: 30px 0 50px; width: 70%; line-height: 1.5; font
 const PjBtn = styled.span<{isDark: boolean}>`
     display: inline-block; padding: 10px 20px; line-height: 1; cursor: pointer; border-radius: 50px;
     background: ${({theme,isDark})=> isDark ? theme.gray2 : "#E5E5E5"};
+`
+const Deco = styled.img`
+    position: absolute; left: 22%; bottom: -78%; width: 26% !important;
 `
 
 interface IProjectPops {
@@ -61,24 +65,25 @@ function List(){
         <ListBox>
             <div>
                 {
-                    projectItems.map( (data, idx) => (
-                        <ProjectWrap key={idx}
-                            layoutId={data.href}
+                    projectItems.map( (v, k) => (
+                        <ProjectWrap key={k}
+                            layoutId={v.href}
                         >
                             <ul>
                                 <PjTitle isDark={isDark}>
-                                    <p>{data.group}</p>
-                                    <div>{data.title}</div>
+                                    <p>{v.group}</p>
+                                    <div>{v.title}</div>
                                 </PjTitle>
-                                <PjDesc>{data.desc}</PjDesc>
+                                <PjDesc>{v.desc}</PjDesc>
                                 <li>
                                     <PjBtn 
                                         isDark={isDark}
-                                        onClick={() => onProjectClick(data.href)}
+                                        onClick={() => onProjectClick(v.href)}
                                     >view detail</PjBtn>
+                                    { k == 0 ? <Deco src="asset/svg/deco_arrow1.svg" alt="deco"/> : null }
                                 </li>
                             </ul>
-                            <img src={"asset/intro/"+data.img+".png"} alt={data.img} onClick={() => onProjectClick(data.href)}/>
+                            <img src={"asset/intro/"+v.img+".png"} alt={v.img} onClick={() => onProjectClick(v.href)}/>
                         </ProjectWrap>
                     ))
                 }
