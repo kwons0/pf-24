@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Box from "../Components/box";
 import Intro from "../Components/intro";
 import List from "../Components/list";
+import Footer from "../Components/footer";
 
 function Home(){
     return(
@@ -9,6 +10,7 @@ function Home(){
             <Intro/>
             <Box/>
             <List/>
+            <Footer/>
             <Outlet/>
         </div>
     )

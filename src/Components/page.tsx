@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
 import { CLOSE } from "./svg";
-import { breakpoints } from "../theme";
+import { breakpoints } from "../lib/constants";
 import Luff from "../Routes/project/luff";
 import Sbrand from "../Routes/project/sbrand";
 
@@ -74,7 +74,7 @@ function Page(){
                         >
                             {renderProject()}
                         </ModalBox>
-                        <CloseBtn onClick={onOverlayClick}><CLOSE color={theme.textColor}/></CloseBtn>
+                        <CloseBtn onClick={onOverlayClick}><CLOSE color="#fff"/></CloseBtn>
                     </>
                 ) : (
                     <>

@@ -3,7 +3,8 @@ import Cover from "../../Components/cover";
 import { CAFE24 } from "../../Components/svg";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../../atom";
-import { breakpoints, darkTheme, lightTheme } from "../../theme";
+import { darkTheme, lightTheme } from "../../lib/theme";
+import { breakpoints } from "../../lib/constants";
 import { useEffect, useState } from "react";
 
 

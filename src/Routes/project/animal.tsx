@@ -3,7 +3,8 @@ import Cover from "../../Components/cover";
 import { NEXTJS, VERCEL } from "../../Components/svg";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../../atom";
-import { breakpoints, darkTheme, lightTheme } from "../../theme";
+import { darkTheme, lightTheme } from "../../lib/theme";
+import { breakpoints } from "../../lib/constants";
 import { useEffect, useState } from "react";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;

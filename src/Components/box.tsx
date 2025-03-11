@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { dataItems, categories } from "../data";
+import { dataItems, categories } from "../lib/data";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
-import { breakpoints } from "../theme";
+import { breakpoints } from "../lib/constants";
+import { GITHUB_URL, MAIL_ADDRESS, NOTION_URL, PHONE_NUMBER, PORTFOLIO_DRIVE, RESUME_DRIVE } from "../lib/constants";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -21,17 +22,16 @@ const Container = styled.li<{isDark: boolean}>`
     padding: 10%; margin: 0 0 9% 0; border-radius: 2.5vw;
     position: relative; height: fit-content;
     &:nth-child(even){ margin-right: 0;}
-    > *:nth-child(2){margin-top: 30px;}
+    > *:nth-child(2){margin-top: 45px;}
     ${mediaTablet}{ 
         width: 100%; margin: 0 0 9% 0; padding: 6vw 7vw; font-size: 15px;
         &:first-child{ margin-top:0;}
     }
     
     > h3{ 
-        font-size: 50px; color: ${(props)=> props.theme.textColor+"2b"};  font-weight: 700;
+        font-size: 50px; color: ${(props)=> props.theme.textColor+"40"};  font-weight: 700;
         position: sticky; top: 20px; z-index: 10;
     }
-    > p{ color: ${({theme, isDark})=> isDark ? theme.gray5 : theme.gray3};}
     > div{ line-height: 1.5;}
 `
 const SkillBox = styled(Container)`padding-bottom: 30px;`;
@@ -81,7 +81,6 @@ function Box(){
             <FlexCol>
                 <Container isDark={isDark}>
                     <h3>Hello,</h3>
-                    <p></p>
                     <div>
                         안녕하세요! 저는 디자인을 넘어, 문제를 해결하는 프론트엔드 개발자 권서영입니다.<br/><br/>
                         UX 설계부터 디자인, 개발까지 다양한 단계를 직접 경험하며 각 분야를 깊이 이해할 수 있었고, 이를 통해 프로젝트의 흐름을 파악하고 원활히 진행되도록 이끌어갈 수 있는 역량을 갖추게 되었습니다.<br/><br/>
@@ -92,10 +91,10 @@ function Box(){
                 <LinkBox isDark={isDark}>
                     <h3>Career<br/>& Projects</h3>
                     <ul>
-                        <li><Link to="https://drive.google.com/file/d/1RXCD0PLDOi6fDHjI9lTOFzaNUQHcGDzV/view?usp=sharing" target="_black">이력서, 경력기술서</Link></li>
-                        <li><Link to="https://drive.google.com/file/d/1r3tBoCZFSAsZJd7lGuuWB7E1nlNAzfwN/view?usp=sharing" target="_black">포트폴리오 PDF 파일</Link></li>
-                        <li><Link to="https://www.notion.so/Kwons0-dc7721815f594e4a8c26489e01acbc5e" target="_black">notion.so</Link></li>
-                        <li><Link to="https://github.com/kwons0" target="_black">github.com</Link></li>
+                        <li><Link to={RESUME_DRIVE} target="_black">이력서, 경력기술서</Link></li>
+                        <li><Link to={PORTFOLIO_DRIVE} target="_black">포트폴리오 PDF 파일</Link></li>
+                        <li><Link to={NOTION_URL} target="_black">notion.so</Link></li>
+                        <li><Link to={GITHUB_URL} target="_black">github.com</Link></li>
                     </ul>
                 </LinkBox>
             </FlexCol>
@@ -103,10 +102,9 @@ function Box(){
             <FlexCol>
                 <CBox isDark={isDark}>
                     <h3>Contact</h3>
-                    <p></p>
                     <ul>
-                        <li><a href="mailto:kwons0128@gmail.com">📧&nbsp;&nbsp;kwons0128@gmail.com</a></li>
-                        <li><a href="tel:+821044300820">📞 +82 10.4430.0820</a></li>
+                        <li><a href={"mailto:"+MAIL_ADDRESS}>📧&nbsp;&nbsp;{MAIL_ADDRESS}</a></li>
+                        <li><a href={"tel:"+PHONE_NUMBER.replace(/[ .]/g, "")}>📞 {PHONE_NUMBER}</a></li>
                     </ul>
                 </CBox>
                 <SkillBox isDark={isDark}>

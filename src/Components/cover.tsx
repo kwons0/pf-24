@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import { ARROW, GITHUB, LINKICON, NOTION } from "./svg";
 import styled, { useTheme } from "styled-components";
 import { isDarkAtom, isModalOpen } from "../atom";
-import { breakpoints } from "../theme";
+import { breakpoints } from "../lib/constants";
 import { Link, useLocation } from "react-router-dom";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;

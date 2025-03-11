@@ -1,21 +1,22 @@
 import styled, { useTheme } from "styled-components";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "../atom";
-import { breakpoints } from "../theme";
+import { breakpoints } from "../lib/constants";
 import { Link } from "react-router-dom";
 import { MAINIMG, DARKTHEME, LIGHTTHEME } from "./svg";
+import { GITHUB_URL, NOTION_URL } from "../lib/constants";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
 const Title = styled.div<{isDark:boolean}>`
-    margin: 100px auto 20%; ${mediaTablet}{ margin: 5vw auto;}
+    margin: 100px auto 15%; ${mediaTablet}{ margin: 5vw auto;}
     display: flex; align-items: flex-end; justify-content: space-between; padding: 15vh 5%;
     > svg{ width: 35%; }
     > div{ 
         div{ font-size: 40px; line-height: 1.8; margin-bottom:6%;}
         a{ text-decoration: underline;}
-        p{ font-size: 23px; line-height: 1.5; color: ${({isDark, theme}) => isDark ? theme.gray4 : theme.gray2 };  }
+        p{ font-size: 23px; line-height: 1.5; color: ${(props) => props.theme.gray3 };  }
     }
     span, h1{ display: inline; position: relative;}
 
@@ -59,8 +60,8 @@ function Intro(){
                     <h1>프론트엔드 개발자<Underline src="/asset/intro/title_2.svg" alt="point2"/></h1> 권서영 입니다.
                 </div>
                 <p>저에게 관심 있으시다면 <a href="tel:+821044300820">커피챗</a>해요! ☕️<br/>또는&nbsp;
-                <Link to="https://www.notion.so/Kwons0-dc7721815f594e4a8c26489e01acbc5e" target="_black">Notion</Link> /&nbsp;
-                <Link to="https://github.com/kwons0" target="_black">GitHub</Link> 에서 저를 만나보세요.</p>
+                <Link to={NOTION_URL} target="_black">Notion</Link> /&nbsp;
+                <Link to={GITHUB_URL} target="_black">GitHub</Link> 에서 저를 만나보세요.</p>
 
             </div>
             <MAINIMG color={isDark ? "#a8a8a8" : theme.textColor}/>
