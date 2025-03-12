@@ -4,7 +4,7 @@ import styled, { useTheme } from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
-import { CLOSE } from "./svg";
+import { CLOSE } from "../lib/svg";
 import { breakpoints } from "../lib/constants";
 import Luff from "../Routes/project/luff";
 import Sbrand from "../Routes/project/sbrand";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Cover from "../../Components/cover";
-import { CAFE24 } from "../../Components/svg";
+import { CAFE24 } from "../../lib/svg";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../../atom";
 import { darkTheme, lightTheme } from "../../lib/theme";
@@ -47,24 +47,17 @@ function Luff(){
     return(
         <ProjectBox>
             <Cover 
-                bgimg="/asset/project/luff/pj3-cover.png" 
-                favicon="/asset/project/luff/pj3-favi.svg"
+                group="개인 프로젝트"
                 title="Luff 자사몰 리뉴얼"
                 siteLink="https://luff.kr/" 
                 githubLink="" 
-                notionLink="https://www.notion.so/Luff-198f26733a5f80deacbddb221f8cd716?pvs=4" 
-                desc="브랜드 Luff의 자사몰을 리뉴얼 하였습니다." 
-                contents={ [ "검색 순위", "자사몰 혜택 강조", "UX 설계", "다양한 옵션 형태", "카테고리 구조화", "사이트 개인화" ] }
+                desc="라이프스타일 브랜드 ‘LUFF’는 일상 속 작은 즐거움과 실용성을 담은 제품을 선보입니다. 주로 가방과 북파우치를 제작하며, 심플하면서도 세련된 디자인이 특징입니다. 
+                LUFF 대표님의 Pain Point를 해결하기 위해 자사몰 리뉴얼 프로젝트를 진행하게 되었습니다." 
                 date="2024.3 ~ 2024.06, 3개월" 
                 rate="기획 100%, 디자인 100%, 개발 100%"
-                skills="Javascript, CSS3" 
-                icons={
-                    [
-                        { Component: GrayIcon, props: { src: "/asset/svg/javascript.svg" } },
-                        { Component: GrayIcon, props: { src: "/asset/svg/css3.svg" } },
-                        { Component: CAFE24, props: { color: iconColor } },
-                    ]
-                }
+                skills="HTML5, CSS3, Javascript" 
+                preview="/asset/intro/list_luff.png"
+                color="#E94F59"
             />
  
         {/* <SpaceInTab wrap="wrap" space="center" pd={width >= tabWidth ? "100px 10vw 0" : "100px 0 0"}> */}

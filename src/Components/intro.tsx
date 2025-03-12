@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "../atom";
 import { breakpoints } from "../lib/constants";
 import { Link } from "react-router-dom";
-import { MAINIMG, DARKTHEME, LIGHTTHEME } from "./svg";
+import { MAINIMG, DARKTHEME, LIGHTTHEME } from "../lib/svg";
 import { GITHUB_URL, NOTION_URL } from "../lib/constants";
 
 
@@ -55,7 +55,7 @@ function Intro(){
     <>
         <Title isDark={isDark}>
             <div>
-                <div>반갑습니다!<br/>저는 좋은 디자인을 구별할 줄 알고<br/>
+                <div>안녕하세요!<br/>저는 좋은 디자인을 구별할 줄 알고<br/>
                     <span>유저 친화적인 서비스<Underline src="/asset/intro/title_1.svg" alt="point1"/></span>를 만드는<br/>
                     <h1>프론트엔드 개발자<Underline src="/asset/intro/title_2.svg" alt="point2"/></h1> 권서영 입니다.
                 </div>
