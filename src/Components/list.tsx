@@ -74,7 +74,6 @@ const hoverAnimation = {
 function List(){
 
     const isDark = useRecoilValue(isDarkAtom);
-    const projectItems = pjItems.flatMap(data => data.item);
 
     // 모달 열기*닫기
     const navigate = useNavigate();
@@ -94,7 +93,7 @@ function List(){
         <ListBox>
             <div>
                 {
-                    projectItems.map( (v, k) => (
+                    pjItems.map( (v, k) => (
                         <ProjectWrap key={k}
                             layoutId={v.href}
                         >
@@ -115,7 +114,7 @@ function List(){
                                 </li>
                             </ul>
                             <PjImg 
-                                src={"asset/intro/"+v.img+".png"} alt={v.img} 
+                                src={v.img} alt="project-img"
                                 onClick={() => onProjectClick(v.href)}
                                 variants={hoverAnimation} 
                                 whileHover='hover'

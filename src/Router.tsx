@@ -3,9 +3,7 @@ import { isModalOpen } from './atom';
 import { useRecoilValue } from 'recoil';
 import Home from './Routes/Home';
 import Page from './Components/page';
-import Animal from './Routes/project/animal';
-import Luff from './Routes/project/luff';
-import Sbrand from './Routes/project/sbrand';
+import Project from './Components/project';
 
 function Router(){
     const modalState = useRecoilValue(isModalOpen);
@@ -21,9 +19,7 @@ function Router(){
                     ) : (
                         <>
                             <Route path="/" element={<Home/>}/>
-                            <Route path="/project/luff" element={<Luff/>}/>
-                            <Route path="/project/animal" element={<Animal/>}/>
-                            <Route path="/project/sbrand" element={<Sbrand/>}/>
+                            <Route path="/project/:projectId" element={<Project/>}/>
                         </>
                     )
                 }

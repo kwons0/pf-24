@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Animal from '../Routes/project/animal';
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
@@ -8,6 +8,7 @@ import { CLOSE } from "../lib/svg";
 import { breakpoints } from "../lib/constants";
 import Luff from "../Routes/project/luff";
 import Sbrand from "../Routes/project/sbrand";
+import Project from "./project";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -34,10 +35,8 @@ const CloseBtn = styled.span`
 function Page(){
     const location = useLocation();
     const navigate = useNavigate();
-    const { projectId } = useParams();
     
     const isDark = useRecoilValue(isDarkAtom)
-    const theme = useTheme();
 
     const onOverlayClick = () => {
         navigate('/')
@@ -45,14 +44,6 @@ function Page(){
 
     const isModal = location.state?.modal;
 
-    const renderProject = () => {
-        switch ( projectId ) {
-            case "animal": return <Animal/>;
-            case "sbrand": return <Sbrand/>;
-            case "luff": return <Luff/>;
-            default: return null;
-        }
-    }
 
     return(
         <AnimatePresence>
@@ -72,13 +63,13 @@ function Page(){
                             animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
                             exit={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
                         >
-                            {renderProject()}
+                            <Project/>
                         </ModalBox>
                         <CloseBtn onClick={onOverlayClick}><CLOSE color="#fff"/></CloseBtn>
                     </>
                 ) : (
                     <>
-                        <div>{renderProject()}</div>
+                        <Project/>
                     </>
                 )
             }
