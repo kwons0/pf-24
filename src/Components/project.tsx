@@ -5,6 +5,7 @@ import { breakpoints } from "../lib/constants";
 import { isDarkAtom } from "../atom";
 import Cover from "./cover";
 import { pjItems, SubItem } from "../lib/data";
+import { motion } from "framer-motion";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -44,7 +45,7 @@ const Section = styled.div`
         }
     }
 `
-const Site = styled.span<{color: string}>`
+const Site = styled(motion.span)<{color: string}>`
     display: inline-block; margin-top: 10px; background: ${({color}) => color+"30"}; color: ${({color}) => color}; padding: 10px 20px; border-radius: 50px;
 `
 
@@ -53,6 +54,8 @@ const Right = styled.div`
     iframe{ width: 100%}
     ${mediaTablet}{ margin: 80px 0; width: 100%;}
 `
+
+
 
 function isSubItem( item: string | SubItem ): item is SubItem {
     return typeof item === 'object' && 'subContents' in item;
@@ -64,7 +67,7 @@ function Project(){
     const { projectId } = useParams();
     const project = pjItems.find( (v) => v.id === projectId );
 
-    if( !project ) return <div>프로젝트를 찾을 수 없습니다.</div>
+    if( !project ) return null;
 
     return(
         <ProjectBox>
@@ -85,31 +88,38 @@ function Project(){
                 <Wrap>
                     <Left>
                         <div>
-                            {project.contents.map((content) => (
-                            <Section>
+                            {project.contents.map((content, index) => (
+                            <Section key={index}>
                                 <p>{content.title}</p>
                                 <ul>
                                     {content.items.map( (item,idx) => 
                                         isSubItem(item) ? (
-                                                <li key={idx}>
-                                                    {item.text}
-                                                    <ul>
-                                                        {
-                                                            item.subContents.map( (v,k)=>(
-                                                                <li key={k}>{v}</li>
-                                                            ))
-                                                        }
-                                                        
-                                                    </ul>
-                                                </li>
-                                            ) : <li key={idx}>{item}</li>
+                                            <li key={idx}>
+                                                {item.text}
+                                                <ul>
+                                                    {
+                                                        item.subContents.map( (v,k)=>(
+                                                            <li key={k}>{v}</li>
+                                                        ))
+                                                    }
+                                                </ul>
+                                            </li>
+                                        ) : (
+                                            <li key={idx}>{item}</li>
+                                        )
                                     )}
                                 </ul>
                             </Section>
                             ))}
                         </div>
                         <Link to={project.drive + "/view?usp=sharing"} target="_blank">
-                            <Site color={project.color}>프로젝트 내용 자세히 보기&nbsp;&nbsp;&gt;</Site>
+                            <Site
+                                color={project.color}
+                                variants={{ hover: { background: project.color, color: "#fff" } }}
+                                whileHover="hover"
+                            >
+                                프로젝트 내용 자세히 보기&nbsp;&nbsp;&gt;
+                            </Site>
                         </Link>
                     </Left>
                     <Right>

@@ -1,13 +1,10 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Animal from '../Routes/project/animal';
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
 import { CLOSE } from "../lib/svg";
 import { breakpoints } from "../lib/constants";
-import Luff from "../Routes/project/luff";
-import Sbrand from "../Routes/project/sbrand";
 import Project from "./project";
 
 
