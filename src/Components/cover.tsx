@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { ARROW, GITHUB, LINKICON, NOTION } from "../lib/svg";
+import { ARROW, GITHUB, LINKICON } from "../lib/svg";
 import styled, { useTheme } from "styled-components";
 import { isDarkAtom, isModalOpen } from "../atom";
 import { breakpoints } from "../lib/constants";

@@ -55,10 +55,6 @@ const CBox = styled(LinkBox)`
         }
     }
 `
-const Deco = styled.img`
-    position: absolute; left: 37%; top: 10%; width: 15%;
-    ${mediaTablet}{ left: 52%; top: 7%; width: 20%;}
-`
 
 
 const Skills = styled.div`
@@ -91,7 +87,6 @@ function Box(){
                         좋은 디자인을 구별할 수 있을 뿐만 아니라 그것을 구현할 수 있는 개발자는 무한한 가능성을 가지고 있다고 믿습니다.<br/><br/>
                         저에게 관심이 있으시다면 언제든지 연락 부탁드립니다!
                     </div>
-                    <Deco src="asset/svg/deco3.svg" alt="deco"/> 
                 </Container>
                 <LinkBox isDark={isDark}>
                     <h3>Career<br/>& Projects</h3>

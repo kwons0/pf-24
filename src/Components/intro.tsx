@@ -28,6 +28,12 @@ const Title = styled.div<{isDark:boolean}>`
             p{ font-size: 16px; }
         }
     }
+
+    @media (max-width: 950px) and (min-width: ${breakpoints.mobile} ){
+        > div{ 
+            div{ font-size: 33px;}
+        }
+    }
 `
 const Underline = styled.img`position: absolute; left:0; bottom: -12%;`
 

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";

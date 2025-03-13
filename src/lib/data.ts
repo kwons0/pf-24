@@ -10,17 +10,32 @@ type CategoryItem = {
 }
 
 
-type PjArr = {
+export type SubItem = {
+    text: string;
+    subContents: string[];
+}
+type ContentsItem = {
     title: string;
-    img: string;
-    href: string;
-    group: string;
-    desc: string;
+    items: (string | SubItem)[];
 }
 
-type PjItem = {
-    name: string;
-    item: PjArr[];
+
+type ProjectItem = {
+    id: string;
+    group: string;
+    title: string;
+    siteLink: string;
+    githubLink: string;
+    img: string;
+    href: string;
+    desc: string;
+    detail: string;
+    date: string;
+    rate: string;
+    skills: string;
+    color: string;
+    drive: string;
+    contents: ContentsItem[]
 }
 
 export const dataItems: DataItem[] = [
@@ -66,52 +81,6 @@ export const categories: CategoryItem[] = [
     },
 ];
 
-
-
-
-export const pjItemss: PjItem[] = [
-    {
-        "name": "project",
-        "item": [
-            { title: "거래해요! 동물의 숲", img: "list_animal", href: "animal", group: "개인 프로젝트", 
-                desc: "당근마켓과 트위터의 기능을 결합하며, 단순한 클론이 아닌 차별화된 컨셉을 설정한 중고거래 사이트입니다." },
-            { title: "S사 자사몰 구축", img: "list_sbrand", href: "sbrand",  group: "협업 프로젝트(실무)",
-                desc: "S사의 플랫폼 이전으로 새로운 환경에 최적화된 쇼핑몰을 구축하였습니다."
-             },
-            { title: "Luff 자사몰 리뉴얼", img: "list_luff", href: "luff", group: "개인 프로젝트",
-                desc: "브랜드 Luff의 Pain Point를 해결하기 위해 자사몰 리뉴얼하였습니다."
-             },
-        ]
-    }
-]
-
-export type SubItem = {
-    text: string;
-    subContents: string[];
-}
-type ContentsItem = {
-    title: string;
-    items: (string | SubItem)[];
-}
-
-
-type ProjectItem = {
-    id: string;
-    group: string;
-    title: string;
-    siteLink: string;
-    githubLink: string;
-    img: string;
-    href: string;
-    desc: string;
-    detail: string;
-    date: string;
-    rate: string;
-    skills: string;
-    color: string;
-    drive: string;
-    contents: ContentsItem[]
-}
 
 export const pjItems: ProjectItem[] = [
     
