@@ -20,7 +20,7 @@ const Overlay = styled(motion.div)`
 const ModalBox = styled(motion.div)<{isDark: boolean}>`
     position: fixed; left:50%; top: 50%;
     width: 85vw; max-width: 1000px; height: 90vh; z-index: 100; box-sizing: border-box; border-radius: 2rem;
-    background: ${({theme, isDark}) => isDark ? theme.gray1 : "#fff"}; 
+    background: ${({theme, isDark}) => isDark ? "#2f2f2f" : "#fff"}; 
     overflow-y: scroll; -ms-overflow-style: none;
     &::-webkit-scrollbar{ display:none; }
     ${mediaTablet}{ width: 100vw; top: 55vh; border-radius: 1rem 1rem 0 0; }

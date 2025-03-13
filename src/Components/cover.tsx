@@ -7,8 +7,14 @@ import { Link } from "react-router-dom";
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
 
-const ModalWrap = styled.ul`display: flex; align-items: center; justify-content: space-between; padding: 10% 5vw;`
-const Left = styled.li`position: relative; width: 40%;`
+const ModalWrap = styled.ul`
+    display: flex; align-items: center; justify-content: space-between; padding: 10% 5vw;
+    ${mediaTablet}{ display: block;}
+`
+const Left = styled.li`
+    position: relative; width: 40%;
+    ${mediaTablet}{ width: 100%;}
+`
 const Title = styled.div<{isDark: boolean}>`
     p{ font-size: 14px; color: ${(props)=>props.theme.gray3};}
     h4{ font-size: 25px; margin: 13px 0 18px;}
@@ -19,15 +25,14 @@ const Title = styled.div<{isDark: boolean}>`
             font-size: 14px; line-height: 2; margin: 0 20px 0 0;
             text-decoration: underline;
             svg{ width: 20px; margin: 0 10px 0 0;}
-            ${mediaTablet}{ font-size: 12px; padding: 5px 9px; margin: 0 10px 0 0;}
+            ${mediaTablet}{ font-size: 12px; }
         }
     }
 `
 
 const Info = styled.ul`
-    margin: 50px 0 40px; font-size: 15px;
-    ${mediaTablet}{ display: block;
-    }
+    margin: 13% 0 10%; font-size: 15px;
+    ${mediaTablet}{ display: block;}
 `
 const SectionTitle = styled.span<{color: string}>`
     color: ${({color}) => color}; 
@@ -36,7 +41,9 @@ const SectionTitle = styled.span<{color: string}>`
 const Desc = styled.div`
     font-size: 15px; line-height: 1.8;
 `
-const Right = styled.li` max-width: 55%;`
+const Right = styled.li` max-width: 55%;
+    ${mediaTablet}{ max-width: 100%; margin: 20% 0 0;}
+`
 
 
 
@@ -78,7 +85,7 @@ function Cover(
 
     return(
     <div>
-        { !isModal ? <Nav><Link to="/"><ARROW color={isDark? "#E6E6E6" : theme.gray1}/> Back to Home</Link></Nav> : null }
+        { !isModal ? <Nav><Link to="/"><ARROW color={isDark? "#E6E6E6" : theme.gray4}/> Back to Home</Link></Nav> : null }
         <ModalWrap>
             <Left>
                 <Title isDark={isDark}>
