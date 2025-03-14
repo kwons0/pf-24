@@ -30,7 +30,7 @@ const Container = styled.li<{isDark: boolean}>`
     
     > h3{ 
         font-size: 50px; color: ${(props)=> props.theme.textColor+"40"};  font-weight: 700;
-        position: sticky; top: 20px; z-index: 10;
+        position: sticky; top: 20px; z-index: 10; line-height: 1;
     }
     > div{ line-height: 1.5;}
 `

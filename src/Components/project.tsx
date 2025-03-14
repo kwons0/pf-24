@@ -17,6 +17,7 @@ const ProjectBox = styled.div`
 const Contents = styled.div<{isDark: boolean}>`
     margin: 0 5vw 50px; padding: 50px 0; border-top: 1px solid ${({isDark, theme})=> isDark ? theme.gray2 : theme.gray1};
     h5{ font-size: 45px; color: ${({isDark, theme})=> isDark ? theme.gray2 : theme.gray1}; font-weight:700; margin-bottom: 50px;}
+    ${mediaTablet}{ padding: 50px 0 0; }
 `
 const Wrap = styled.div`
     display: flex; justify-content: space-between;
