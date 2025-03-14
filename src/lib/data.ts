@@ -47,11 +47,11 @@ export const dataItems: DataItem[] = [
     { title: "React.js", img: "reactjs", color: "#7ed8eb"},
     { title: "Next.js", img: "nextjs", color: "#dddddd"},
     { title: "jQuery", img: "jquery", color: "#0f69aa"},
-    { title: "Sass", img: "sass", color: "#CD6799"},
+    { title: "SCSS", img: "sass", color: "#CD6799"},
     { title: "tailwindcss", img: "tailwind", color: "#06B6D4"},
     { title: "styled-components", img: "styled-components", color: "#ed92ca"},
     { title: "Framer-motion", img: "framer-motion", color: "#BB4B96"},
-    { title: "webpack", img: "webpack", color: "#6b0bf5"},
+    { title: "webpack", img: "webpack", color: "#8acff4"},
     { title: "npm", img: "npm", color: "#CC0000"},
     { title: "Git", img: "git", color: "#DE4C36"},
     { title: "GitHub", img: "github", color: "#5968ba"},
@@ -65,15 +65,15 @@ export const dataItems: DataItem[] = [
 export const categories: CategoryItem[] = [
     {
         title: "프론트 실무에 사용했습니다.",
-        skills: ["Bitbucket", "CSS3", "Figma", "Git", "HTML5", "JSON", "JavaScript", "jQuery"]
+        skills: [ "HTML5", "CSS3", "JavaScript", "jQuery", "JSON", "Git", "Figma", "Bitbucket" ]
     },
     {
         title: "개인 프로젝트에 사용했습니다.",
-        skills: ["CSS3", "Figma", "Framer-motion", "Git", "GitHub", "HTML5", "JSON", "JavaScript", "Next.js", "React.js", "Sass", "TypeScript"]
+        skills: [ "JavaScript", "TypeScript", "React.js", "Next.js", "jQuery", "JSON", "HTML5", "CSS3", "SCSS", "tailwindcss", "styled-components", "Framer-motion", "webpack", "npm", "Git", "GitHub", "Figma"]
     },
     {
-        title: "계속 공부 중입니다.",
-        skills: ["React.js","TypeScript", "Next.js"]
+        title: "끊임없이 공부 중입니다.",
+        skills: ["TypeScript", "JavaScript", "React.js", "Next.js"]
     },
     {
         title: "디자인 실무에 사용했습니다.",
@@ -114,7 +114,7 @@ export const pjItems: ProjectItem[] = [
         githubLink: "", 
         img: "/asset/intro/list_sbrand.png", 
         href: "sbrand", 
-        desc: "S사의 플랫폼 이전으로 새로운 환경에 최적화된 쇼핑몰을 구축하였습니다.",
+        desc: "S사 이커머스 사이트의 플랫폼 이관으로 플랫폼 내에서 자사몰을 신규 구축하는 프로젝트 입니다.",
         detail: "고도몰에서 카페24로의 플랫폼 이전을 진행하는 프로젝트입니다. 단순한 마이그레이션이 아닌 기존 사이트의 강점을 유지하면서도 새로운 플랫폼 환경에 최적화된 쇼핑몰을 구축하는 것을 목표로 진행했습니다.",
         date: "2023.5 ~ 2023.08, 3개월" ,
         rate: "개발 100%",
@@ -145,7 +145,7 @@ export const pjItems: ProjectItem[] = [
         githubLink: "",
         img: "/asset/intro/list_luff.png", 
         href: "luff", 
-        desc: "브랜드 Luff의 Pain Point를 해결하기 위해 자사몰 리뉴얼하였습니다.",
+        desc: "Luff 브랜드 대표님의 Pain point를 듣고 이를 해결하려 자사몰을 리뉴얼하는 프로젝트 입니다.",
         detail: "라이프스타일 브랜드 ‘LUFF’는 일상 속 작은 즐거움과 실용성을 담은 제품을 선보입니다. 주로 가방과 북파우치를 제작하며, 심플하면서도 세련된 디자인이 특징입니다. LUFF 대표님의 Pain Point를 해결하기 위해 자사몰 리뉴얼 프로젝트를 진행하게 되었습니다.",
         date: "2024.3 ~ 2024.06, 3개월" ,
         rate: "기획 100%, 디자인 100%, 개발 100%",
