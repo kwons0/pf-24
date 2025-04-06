@@ -61,8 +61,8 @@ function Intro(){
     <>
         <Title isDark={isDark}>
             <div>
-                <div>안녕하세요!<br/>저는 좋은 디자인을 구별할 줄 알고<br/>
-                    <span>유저 친화적인 서비스<Underline src="/asset/intro/title_1.svg" alt="point1"/></span>를 만드는<br/>
+                <div>안녕하세요!<br/>복잡한 문제를 구조적으로 해석하고, <br/>
+                    사용자 경험을 기준으로<span>개선을 반복하는<Underline src="/asset/intro/title_1.svg" alt="point1"/></span><br/>
                     <h1>프론트엔드 개발자<Underline src="/asset/intro/title_2.svg" alt="point2"/></h1> 권서영 입니다.
                 </div>
                 <p>저에게 관심 있으시다면 <a href="tel:+821044300820">커피챗</a>해요! ☕️<br/>또는&nbsp;
