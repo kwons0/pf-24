@@ -16,7 +16,6 @@ export type SubItem = {
 }
 type ContentsItem = {
     title: string;
-    items: (string | SubItem)[];
 }
 
 
@@ -35,7 +34,8 @@ type ProjectItem = {
     skills: string;
     color: string;
     drive: string;
-    contents: ContentsItem[]
+    trouble: string[];
+    contents?: ContentsItem[];
 }
 
 export const dataItems: DataItem[] = [
@@ -87,7 +87,7 @@ export const pjItems: ProjectItem[] = [
 
     { 
         id: "sbrand",
-        group: "협업 프로젝트(실무)",
+        group: "실무 프로젝트",
         title: "S사 자사몰 구축", 
         siteLink: "",
         githubLink: "", 
@@ -95,26 +95,46 @@ export const pjItems: ProjectItem[] = [
         href: "sbrand", 
         desc: "S사 이커머스 사이트의 플랫폼 이관으로 플랫폼 내에서 자사몰을 신규 구축하는 프로젝트 입니다.",
         detail: "고도몰에서 카페24로 플랫폼을 이전하며, 기존 사이트에서 안정적으로 운영되던 기능은 유지하고, 사용자 경험과 운영 효율을 고려해 구조를 새롭게 리디자인한 리뉴얼 프로젝트입니다.",
-        date: "2023.5 ~ 2023.08, 3개월" ,
+        date: "2023.5 ~ 2023.08" ,
         rate: "개발 100%",
         skills: "HTML5, CSS3, Javascript" ,
         color: "#6981af",
         drive: "https://drive.google.com/file/d/16V8bN2j8JdJMjLwzn5nqBdXzLOpp6xVQ",
-        contents: [
-            { title: "Key Roles", items: ["주요 역할 및 기여 내용"] },
-            { title: "Key Contents", items: [ 
-                { 
-                    text: '상품 진열 및 프로모션 최적화 기능 개발',
-                    subContents: [
-                        '한 페이지에서 다양한 카테고리 상품 탐색 기능 구현',
-                        '이벤트 페이지에서 상품 구매 여정 간소화'
-                    ]
-                },
-                'SNS로그인 리다이렉트 기능 개선'
-            ]},
-            { title: "Troubleshooting", items: [ "쿠폰 할인가 미적용 문제와 해결 방법" ]},
-            { title: "What I Learned", items: [ "프로젝트를 통해 배운 점" ]},
-        ]
+        trouble: [ "상품 진열 및 프로모션 최적화 기능 개발" ],
+    },
+    { 
+        id: "lbrand",
+        group: "실무 프로젝트",
+        title: "L사 자사몰 구축", 
+        siteLink: "",
+        githubLink: "", 
+        img: "/asset/intro/list_lbrand.png", 
+        href: "lbrand", 
+        desc: "브랜드 L사의 론칭에 맞춰 자사몰을 새롭게 구축한 프로젝트입니다. ",
+        detail: "브랜드 L사의 론칭에 맞춰, 메이크샵 기반으로 자사몰을 새롭게 구축한 프로젝트입니다. 기능 제약이 많은 플랫폼 환경에서 브랜드의 정체성과 색을 살리면서도, 상품이 돋보일 수 있는 사용자 경험을 구현하는 데 집중했습니다.",
+        date: "2024.3 ~ 2024.05" ,
+        rate: "개발 100%",
+        skills: "HTML5, CSS3, Javascript" ,
+        color: "#BF214B",
+        drive: "https://drive.google.com/file/d/1Xt-vgzpRUx3Mmw5EimLGMC1_Kh8a4OGZ",
+        trouble: [ "카테고리 네비게이션 구조 개선을 통한 사용자 탐색 흐름 최적화" ],
+    },
+    { 
+        id: "gbrand",
+        group: "실무 프로젝트",
+        title: "G사 자사몰 구축", 
+        siteLink: "",
+        githubLink: "", 
+        img: "/asset/intro/list_gbrand.png", 
+        href: "gbrand", 
+        desc: "G사 이커머스 사이트를 지속적으로 개선한 프로젝트 입니다.",
+        detail: "G사의 초기 자사몰 운영부터 연 매출 700억 원 이상 성장하기까지,사이트를 지속적으로 개선하며 브랜드의 전환율과 사용성 향상을 이끈 프로젝트입니다. 다양한 프로모션 대응, 사용자 여정 개선, 범용 컴포넌트 개발 등을 통해 실질적인 매출 증대에 기여했으며, 동시에 기술적으로도 성장할 수 있던 경험입니다.",
+        date: "2021.11~" ,
+        rate: "개발 100%",
+        skills: "HTML5, CSS3, Javascript" ,
+        color: "#F17957",
+        drive: "https://drive.google.com/file/d/1xqj0DG-XOG0ITXkAWnFD2lsNkzRFnxs6",
+        trouble: [ "상품 진열 및 프로모션 최적화 기능 개발" ],
     },
     { 
         id: "animal",
@@ -131,11 +151,9 @@ export const pjItems: ProjectItem[] = [
         skills: "Next.js, TypeScript, Tailwindcss",
         color: "#039F5C",
         drive: "https://drive.google.com/file/d/1wQ0LJ1NRznPM2U0ISTF4hDR7kN7IyxPP",
+        trouble: [ "좋아요/댓글 UI 미반영 문제 해결", "진입 경로에 따른 상점 정보 UI 분기 처리" ],
         contents: [
-            { title: "Userflow", items: ["화면 구성 및 유저플로우"] },
-            { title: "Key Contents", items: [ "회원가입, 로그인", "트윗, 댓글 작성하기", "마을 정보 확인/수정하기",]},
-            { title: "Troubleshooting", items: [ "좋아요, 댓글 즉시 반영 문제와 해결 과정", "상점 정보 페이지의 진입 경로에 따른 UI 차이 해결 과정", ]},
-            { title: "What I Learned", items: [ "프로젝트를 통해 배운 점" ]},
+            { title: "6. 기술 설계 요약" },
         ]
     }
         

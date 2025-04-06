@@ -27,21 +27,16 @@ const Left = styled.div`
     width: 45%;
     ${mediaTablet}{ width: 100%;}
 `
-const Section = styled.div`
+const Section = styled.ul`
     margin: 25px 0;
-    p{ font-size: 18px; font-weight: 500; position: relative; padding: 0 0 0 15px;
-        &::before{ 
-            display: inline-block; content: ""; clear: both; 
-            width: 5px; height: 5px; background: ${(props)=>props.theme.textColor};
-            position: absolute; left: 3px; top: 50%; transform: translateY(-50%);
-        }
-    }
-    ul{ padding: 10px 0 0 25px;
-        li{ 
-            font-size: 15px; color: ${(props)=>props.theme.gray3}; line-height: 1.8; list-style: circle;
-            ul{ 
-                padding: 10px 0 10px 25px;
-                li{ list-style: outside;}
+    li{ padding: 10px 0 0 0; line-height: 1.8;
+        p{ font-size: 15px; position: relative; color: ${(props)=>props.theme.gray4}; 
+            margin-left: 10px; padding-left:15px;
+            line-height: 2;
+            &::before{ 
+                display: inline-block; content: ""; clear: both; 
+                width: 5px; height: 5px; background: ${(props)=>props.theme.gray4};
+                position: absolute; left: 3px; top: 50%; transform: translateY(-50%);
             }
         }
     }
@@ -89,29 +84,22 @@ function Project(){
                 <Wrap>
                     <Left>
                         <div>
-                            {project.contents.map((content, index) => (
-                            <Section key={index}>
-                                <p>{content.title}</p>
-                                <ul>
-                                    {content.items.map( (item,idx) => 
-                                        isSubItem(item) ? (
-                                            <li key={idx}>
-                                                {item.text}
-                                                <ul>
-                                                    {
-                                                        item.subContents.map( (v,k)=>(
-                                                            <li key={k}>{v}</li>
-                                                        ))
-                                                    }
-                                                </ul>
-                                            </li>
-                                        ) : (
-                                            <li key={idx}>{item}</li>
-                                        )
-                                    )}
-                                </ul>
+                            <Section>
+                                <li>1. 프로젝트 개요</li>
+                                <li>2. 담당 역할 및 업무 범위</li>
+                                <li>3. 기술 설계 및 구현 흐름</li>
+                                <li>4. 트러블슈팅 및 협업 경험</li>
+                                <li>
+                                    {project.trouble.map((item, idx) => (<p key={idx}>{item}</p>))}
+                                </li>
+                                <li>5. 성과 및 배운 점</li>
+                                {
+                                    project.contents && project.contents.map( (item, idx) => (
+                                            <li key={idx}>{item.title}</li>
+                                    ))
+                                    
+                                }
                             </Section>
-                            ))}
                         </div>
                         <Link to={project.drive + "/view?usp=sharing"} target="_blank">
                             <Site
