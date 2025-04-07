@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { breakpoints } from "../lib/constants";
 import { isDarkAtom } from "../atom";
 import Cover from "./cover";
-import { pjItems, SubItem } from "../lib/data";
+import { pjItems } from "../lib/data";
 import { motion } from "framer-motion";
 
 
@@ -50,12 +50,6 @@ const Right = styled.div`
     iframe{ width: 100%}
     ${mediaTablet}{ margin: 80px 0; width: 100%;}
 `
-
-
-
-function isSubItem( item: string | SubItem ): item is SubItem {
-    return typeof item === 'object' && 'subContents' in item;
-}
 
 function Project(){
     const isDark = useRecoilValue(isDarkAtom);

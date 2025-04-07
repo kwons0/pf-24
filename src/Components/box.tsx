@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { dataItems, categories } from "../lib/data";
+import { dataItems, categories, skillsDesc } from "../lib/data";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
@@ -59,17 +59,25 @@ const CBox = styled(LinkBox)`
 
 const Skills = styled.div`
     &:first-child{ div{ padding-top: 0;} }
-    div{ color: ${(props)=>props.theme.gray4}; padding: 20px 0 13px; font-size: 14px; font-weight: 400;}
+    div{ color: ${(props)=>props.theme.gray2}; padding: 20px 0 10px; font-size: 14px; font-weight: 400;}
     ul{ display: flex; flex-wrap: wrap;}
 
 `
-const SkillItem = styled.li<{bgColor: string}>`
-    background: ${(props)=> props.bgColor}; padding: 5px 10px; line-height: 1; margin: 0 5px 7px 0; border-radius: 30px; font-size: 12px;
+const SkillItem = styled.li`
+    line-height: 1; margin: 0 5px 7px 0;
 `
-const Icons = styled.ul`
-    display: flex; flex-wrap: wrap; margin-top: 40px;
-    filter: grayscale(1); opacity: 0.6;
-    li{ width: 5%; margin: 0 3% 3% 0;}
+
+const DescBox = styled.div`
+    margin: 30px 0;
+    p{ width: 20px; display: flex; align-items: center; 
+        img{ margin-right: 5px; }
+    }
+    span{ 
+        font-size: 12px; display: inline-block; padding: 5px 12px; font-weight: 500;
+        border-radius: 20px; line-height: 1; background: ${(props) => props.theme.gray1};
+    }
+    div{ font-size: 14px;}
+    
 `
 
 
@@ -110,29 +118,40 @@ function Box(){
                 <SkillBox isDark={isDark}>
                     <h3>Skills</h3>
                     <ul>
-                        {categories.map((category) => (
-                            <Skills key={category.title}>
+                        {categories.map((category,idx) => (
+                            <Skills key={idx}>
                                 <div>{category.title}</div>
                                 <ul>
-                                    { category.skills.map((data) => {
+                                    { category.skills.map((data,i) => {
                                         let skill = dataItems.find((v)=>v.title === data)
+                                        let isLast = i === category.skills.length - 1;
                                         return skill ? (            
-                                            <SkillItem key={skill.title} bgColor={skill.color + "30"}>{skill.title}</SkillItem>
+                                            <SkillItem key={skill.title}>{skill.title}{!isLast && ','}</SkillItem>
                                         ) : null
                                     }) }
                                 </ul>
                             </Skills>
                         ))}
                     </ul>
-                    <Icons>
+                    <DescBox>
+                        <ul>
                         {
-                            dataItems.map((skill, idx) => (
+                            skillsDesc.map((item,idx) => (
                                 <li key={idx}>
-                                    <img src={"asset/svg/"+skill.img+".svg"}/>
+                                    <p>
+                                        {
+                                            item.icon.map((v,k)=>(
+                                                <img key={k} src={"asset/svg/"+v+".svg"}/>
+                                            ))
+                                        }
+                                    </p>
+                                    <span>{item.title}</span>
+                                    <div>{item.desc}</div>
                                 </li>
                             ))
                         }
-                    </Icons>
+                        </ul>
+                    </DescBox>
                 </SkillBox>
             </FlexCol>
         </ContainerWrap>

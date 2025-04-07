@@ -9,6 +9,11 @@ type CategoryItem = {
     skills: string[];
 }
 
+type DescItem = {
+    icon: string[];
+    title: string;
+    desc: string;
+}
 
 export type SubItem = {
     text: string;
@@ -63,23 +68,35 @@ export const dataItems: DataItem[] = [
 ]
 
 export const categories: CategoryItem[] = [
-    {
-        title: "프론트 실무에 사용했습니다.",
-        skills: [ "HTML5", "CSS3", "JavaScript", "jQuery", "JSON", "Git", "Figma", "Bitbucket" ]
-    },
-    {
-        title: "개인 프로젝트에 사용했습니다.",
-        skills: [ "JavaScript", "TypeScript", "React.js", "Next.js", "jQuery", "JSON", "HTML5", "CSS3", "SCSS", "tailwindcss", "styled-components", "Framer-motion", "webpack", "npm", "Git", "GitHub", "Figma"]
-    },
-    {
-        title: "끊임없이 공부 중입니다.",
-        skills: ["TypeScript", "JavaScript", "React.js", "Next.js"]
-    },
-    {
-        title: "디자인 실무에 사용했습니다.",
-        skills: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Adobe Premeiere"]
-    },
+    { title: "Language", skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "JSON"]},
+    { title: "FrontEnd", skills: ["React.js", "Next.js", "jQuery", "SCSS", "tailwindcss", "styled-components", "Framer-motion"]},
+    { title: "Build Tools", skills: ["webpack", "npm"]},
+    { title: "Version Control", skills: ["Git", "GitHub", "Bitbucket"]},
+    { title: "Design & Editing", skills: ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Adobe Premiere Pro"]},
 ];
+
+export const skillsDesc: DescItem[] = [
+    { 
+        icon: ['html5','css3'],
+        title: "HTML5, CSS3",
+        desc: "HTML5와 CSS3를 활용해 웹 표준을 준수한 시맨틱 마크업을 구현하며, 반응형 UI 개발에 능숙합니다. Flexbox, Grid, Media Query 등을 활용해 유지보수가 용이한 구조 설계가 가능합니다."
+    },
+    { 
+        icon: ['javascript','typescript'],
+        title: "javascript, typescript",
+        desc: "컴포넌트 기반 개발과 모듈화된 구조를 통해 유지보수가 용이한 코드를 작성하며, 복잡한 사용자 흐름과 상태 관리를 JavaScript로 유연하게 구현해왔습니다. TypeScript의 정적 타입 시스템을 활용해 예측 가능한 코드 작성에 집중하고 있으며, Props 전달과 API 통신의 타입을 명확히 정의해 오류를 사전에 방지하고 리팩토링 효율을 높이고 있습니다."
+    },
+    { 
+        icon: ["reactjs","nextjs","jquery"],
+        title: "Frameworks / Libraries",
+        desc: "React의 Hooks와 Context를 활용한 상태 및 데이터 흐름 관리에 익숙하며, React Router로 SPA 구조를 구현한 경험이 있습니다. Next.js의 SSR, SSG, 이미지 최적화 및 코드 분할 등을 활용해 성능과 SEO를 고려한 프로젝트를 설계해왔습니다. 또한, jQuery를 활용한 경량 스크립트 작성 및 인터랙티브한 UI 구현에도 능숙합니다."
+    },
+    { 
+        icon: ["sass", "tailwind", "styled-components", "framer-motion"],
+        title: "Styling / Animation libraries",
+        desc: "SCSS를 활용한 컴포넌트 단위 스타일링과 구조적인 설계에 익숙하며, styled-components에서는 props 기반의 동적 스타일링으로 일관된 UI 구현에 힘쓰고 있습니다. 반응형 웹 개발 경험이 풍부하며, 디바이스 특성을 고려한 breakpoint 설계와 사용자 중심의 인터랙션 구현에 능숙합니다."
+    },
+]
 
 
 export const pjItems: ProjectItem[] = [
