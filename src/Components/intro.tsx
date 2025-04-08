@@ -29,9 +29,10 @@ const Title = styled.div<{isDark:boolean}>`
         }
     }
 
-    @media (max-width: 950px) and (min-width: ${breakpoints.mobile} ){
+    @media (max-width: 1073px) and (min-width: ${breakpoints.mobile} ){
         > div{ 
-            div{ font-size: 33px;}
+            div{ font-size: 29px;}
+            p{ font-size: 19px;}
         }
     }
 `

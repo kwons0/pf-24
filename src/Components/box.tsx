@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { dataItems, categories, skillsDesc } from "../lib/data";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -11,6 +11,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination'; 
+import { ABOUT1, ABOUT2, ABOUT3 } from "../lib/svg";
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -29,6 +30,7 @@ const Container = styled.li<{isDark: boolean}>`
     position: relative; height: fit-content;
     &:nth-child(even){ margin-right: 0;}
     > *:nth-child(2){margin-top: 45px;}
+
     ${mediaTablet}{ 
         width: 100%; margin: 0 0 9% 0; padding: 6vw 7vw; font-size: 15px;
         &:first-child{ margin-top:0;}
@@ -38,8 +40,19 @@ const Container = styled.li<{isDark: boolean}>`
         font-size: 50px; color: ${(props)=> props.theme.textColor+"40"};  font-weight: 700;
         position: sticky; top: 20px; z-index: 10; line-height: 1;
     }
-    > div{ line-height: 1.5;}
 `
+const About = styled.li`
+    margin-bottom: 40px;
+    span{
+        svg{ min-width: 20px; max-height: 30px;}
+    }
+    p{ margin: 10px 0 10px; font-weight: 600;}
+    div{ font-size: 15px; line-height: 1.5; color: ${(props)=>props.theme.gray4};
+        b{ font-weight: 600;}
+    }
+`
+
+
 const SkillBox = styled(Container)`padding-bottom: 30px;`;
 
 const LinkBox = styled(Container)`
@@ -86,16 +99,15 @@ const DescBox = styled.div<{isDark: boolean}>`
                 font-size: 12px; display: inline-block; padding: 5px 12px; margin: 15px 0 10px; font-weight: 500;
                 border-radius: 20px; line-height: 1; background: ${(props) => props.theme.gray1};
             }
-            div{ font-size: 14px;}
+            div{ font-size: 14px; line-height: 1.5;}
         }
-        .swiper-pagination-bullets{ }
+        
         .swiper-button-next{ right: 30%;}
         .swiper-button-prev{ left: 30%;}
         .swiper-button-next, .swiper-button-prev{ z-index: 11; top: auto; bottom: -1%; color: ${(props)=> props.theme.textColor};}
         .swiper-button-next::after, .swiper-button-prev::after{ font-size: 15px; font-weight: 600;} 
+        .swiper-pagination-bullet{ background: ${(props)=> props.theme.gray4}}
         .swiper-pagination-bullet-active{ background: ${(props)=> props.theme.mainColor};}
-        
-
         
     }
     
@@ -104,18 +116,31 @@ const DescBox = styled.div<{isDark: boolean}>`
 
 function Box(){
     const isDark = useRecoilValue(isDarkAtom);
+    const theme = useTheme();
 
     return(
         <ContainerWrap>
             <FlexCol>
                 <Container isDark={isDark}>
-                    <h3>Hello,</h3>
-                    <div>
-                        안녕하세요! 저는 디자인을 넘어, 문제를 해결하는 프론트엔드 개발자 권서영입니다.<br/><br/>
-                        UX 설계부터 디자인, 개발까지 다양한 단계를 직접 경험하며 각 분야를 깊이 이해할 수 있었고, 이를 통해 프로젝트의 흐름을 파악하고 원활히 진행되도록 이끌어갈 수 있는 역량을 갖추게 되었습니다.<br/><br/>
-                        좋은 디자인을 구별할 수 있을 뿐만 아니라 그것을 구현할 수 있는 개발자는 무한한 가능성을 가지고 있다고 믿습니다.<br/><br/>
-                        저에게 관심이 있으시다면 언제든지 연락 부탁드립니다!
-                    </div>
+                    <h3>About me</h3>
+                    <ul>
+                        <About>
+                            <span><ABOUT1 color={theme.gray3}/></span>
+                            <p>언제나 더 효율적인 방법을 고민합니다.</p>
+                            <div>반복적이거나 비효율적인 작업은 자동화하고, 표준화된 코드 컨벤션을 통해 유지보수성을 높였습니다. 단기적인 해결책보다 <b>지속 가능한 코드 작성과 확장 가능한 구조 설계를 지향</b>하며, 기술 부채를 줄이고 프로젝트의 안정성과 퀄리티를 높이는 것을 중요하게 생각합니다.</div>
+                        </About>
+                        <About>
+                            <span><ABOUT2 color={theme.gray3}/></span>
+                            <p>사용자 중심 UI/UX에 집중합니다.</p>
+                            <div>디자이너 경험을 바탕으로, 단순한 화면 구현을 넘어 <b>사용자 경험을 고려한 개발</b>을 지향합니다.<br/>
+                            디자인의 의도를 기술적으로 구현하는 데 강점이 있으며, GA4와 사용자 피드백 분석을 통해 문제를 개선한 경험이 있습니다. 와이어프레임 리뷰, 프로토타입 테스트 등 디자인 협업에도 적극적으로 참여해왔습니다.</div>
+                        </About>
+                        <About>
+                            <span><ABOUT3 color={theme.gray3}/></span>
+                            <p>회사와의 선순환을 추구합니다.</p>
+                            <div>회사의 성장과 저의 성장은 함께 간다고 믿습니다. 코드 리뷰를 통해 팀원들과 <b>지식을 공유</b>하고, 타인의 경험에서 인사이트를 얻는 것을 즐깁니다. 이런 경험들이 팀 전체의 역량 강화로 이어진다고 생각합니다.</div>
+                        </About>
+                    </ul>
                 </Container>
                 <LinkBox isDark={isDark}>
                     <h3>Career<br/>& Projects</h3>
