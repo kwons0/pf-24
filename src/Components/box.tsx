@@ -5,6 +5,12 @@ import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atom";
 import { breakpoints } from "../lib/constants";
 import { GITHUB_URL, MAIL_ADDRESS, NOTION_URL, PHONE_NUMBER, PORTFOLIO_DRIVE, RESUME_DRIVE } from "../lib/constants";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination'; 
 
 
 const mediaTablet = `@media (max-width: ${breakpoints.tablet})`;
@@ -67,16 +73,31 @@ const SkillItem = styled.li`
     line-height: 1; margin: 0 5px 7px 0;
 `
 
-const DescBox = styled.div`
-    margin: 30px 0;
-    p{ width: 20px; display: flex; align-items: center; 
-        img{ margin-right: 5px; }
+const DescBox = styled.div<{isDark: boolean}>`
+    .swiper{
+        padding: 40px 0;
+        .swiper-slide{
+            padding: 7%; background:  ${({isDark, theme}) => isDark ? theme.bgColor : theme.bgColor}; border-radius: 15px;
+
+            p{ width: 20px; display: flex; align-items: center; 
+                img{ margin-right: 5px; }
+            }
+            span{ 
+                font-size: 12px; display: inline-block; padding: 5px 12px; margin: 15px 0 10px; font-weight: 500;
+                border-radius: 20px; line-height: 1; background: ${(props) => props.theme.gray1};
+            }
+            div{ font-size: 14px;}
+        }
+        .swiper-pagination-bullets{ }
+        .swiper-button-next{ right: 30%;}
+        .swiper-button-prev{ left: 30%;}
+        .swiper-button-next, .swiper-button-prev{ z-index: 11; top: auto; bottom: -1%; color: ${(props)=> props.theme.textColor};}
+        .swiper-button-next::after, .swiper-button-prev::after{ font-size: 15px; font-weight: 600;} 
+        .swiper-pagination-bullet-active{ background: ${(props)=> props.theme.mainColor};}
+        
+
+        
     }
-    span{ 
-        font-size: 12px; display: inline-block; padding: 5px 12px; font-weight: 500;
-        border-radius: 20px; line-height: 1; background: ${(props) => props.theme.gray1};
-    }
-    div{ font-size: 14px;}
     
 `
 
@@ -133,11 +154,17 @@ function Box(){
                             </Skills>
                         ))}
                     </ul>
-                    <DescBox>
-                        <ul>
+                    <DescBox isDark={isDark}>
+                        <Swiper 
+                            navigation={true} 
+                            slidesPerView={1.2}
+                            spaceBetween={20}
+                            pagination={true}
+                            modules={[Navigation, Pagination]} 
+                            className="mySwiper">
                         {
                             skillsDesc.map((item,idx) => (
-                                <li key={idx}>
+                                <SwiperSlide key={idx}>
                                     <p>
                                         {
                                             item.icon.map((v,k)=>(
@@ -147,10 +174,10 @@ function Box(){
                                     </p>
                                     <span>{item.title}</span>
                                     <div>{item.desc}</div>
-                                </li>
+                                </SwiperSlide>
                             ))
                         }
-                        </ul>
+                        </Swiper>
                     </DescBox>
                 </SkillBox>
             </FlexCol>
