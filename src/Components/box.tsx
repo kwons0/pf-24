@@ -46,8 +46,8 @@ const About = styled.li`
     span{
         svg{ min-width: 20px; max-height: 30px;}
     }
-    p{ margin: 10px 0 10px; font-weight: 600;}
-    div{ font-size: 15px; line-height: 1.5; color: ${(props)=>props.theme.gray4};
+    p{ margin: 15px 0 10px; font-weight: 600; font-size: 17px;}
+    div{ font-size: 14px; line-height: 1.5; color: ${(props)=>props.theme.gray4};
         b{ font-weight: 600;}
     }
 `
